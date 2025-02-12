@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &33674612
@@ -733,6 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &42770643
@@ -1236,6 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &101759319
@@ -1772,6 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1 &190203012
@@ -1897,6 +1901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &198014428
@@ -2158,6 +2163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &209389212
@@ -2751,6 +2757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &256021016
@@ -2954,6 +2961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &270745923
@@ -3869,6 +3877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &421642232
@@ -4134,6 +4143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1 &441040505
@@ -4259,6 +4269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 1229716965}
   player: {fileID: 496320083}
 --- !u!1 &443009366
@@ -4384,6 +4395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1 &464614899
@@ -4626,7 +4638,7 @@ Transform:
   m_GameObject: {fileID: 496320078}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.02, y: 0.727, z: -42.24}
+  m_LocalPosition: {x: -30.02, y: 0.93, z: -37.454}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4846,6 +4858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1 &531694119
@@ -5108,6 +5121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &548521560
@@ -5521,6 +5535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &692132769
@@ -6148,6 +6163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &794575278
@@ -7972,6 +7988,7 @@ GameObject:
   - component: {fileID: 1136385242}
   - component: {fileID: 1136385241}
   - component: {fileID: 1136385244}
+  - component: {fileID: 1136385245}
   m_Layer: 0
   m_Name: Camera1
   m_TagString: MainCamera
@@ -8047,7 +8064,7 @@ Transform:
   m_GameObject: {fileID: 1136385240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.9914449, z: -0.13052616, w: 0}
-  m_LocalPosition: {x: 0, y: 4.27, z: 9.17}
+  m_LocalPosition: {x: -15.742, y: 26.58, z: 7.219}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8097,6 +8114,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1136385245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136385240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a883d3e08451adc4abf485e173a45e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 496320082}
 --- !u!1001 &1156324848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8508,6 +8538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 1961115347}
   player: {fileID: 496320083}
 --- !u!1001 &1252673205
@@ -8711,6 +8742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1 &1276162701
@@ -8836,6 +8868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &1287528111
@@ -9136,6 +9169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &1317759023
@@ -9475,6 +9509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1 &1369145544
@@ -9871,6 +9906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &1421614816
@@ -11374,6 +11410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 1961115347}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &1721540089
@@ -11935,6 +11972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1 &1850927364
@@ -12060,6 +12098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &1879141670
@@ -12453,6 +12492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1 &1961115342
@@ -12578,6 +12618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 1229716965}
   prevSpace: {fileID: 1691560908}
   player: {fileID: 496320083}
 --- !u!1 &1997341214
@@ -12703,6 +12744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c82b81889266c34cab3baeea0880671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSpaces: {fileID: 0}
   prevSpace: {fileID: 0}
   player: {fileID: 496320083}
 --- !u!1001 &2003722108
