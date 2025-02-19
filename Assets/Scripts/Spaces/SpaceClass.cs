@@ -4,24 +4,24 @@ using System.Collections;
 public class SpaceClass : MonoBehaviour
 {
 
-    public ArrayList nextSpaces;
+    public SpaceClass nextSpaces;
     public SpaceClass prevSpace;
     public Player player;
 
 
-    SpaceClass(ArrayList nextSpace, SpaceClass prevSpace,Player player) {
+    SpaceClass(SpaceClass nextSpace, SpaceClass prevSpace,Player player) {
         this.nextSpaces = nextSpace;
         this.prevSpace = prevSpace;
         this.player = player;
     }
-    
+    /*
     public bool pathIsSplit(){
-        if (nextSpaces.Count == 1) { 
+        if (nextSpaces == 1) { 
         return false;
         }
         else return true;
 }
-
+    
     public SpaceClass checkNext() {
         if (!pathIsSplit())
         {
@@ -33,7 +33,7 @@ public class SpaceClass : MonoBehaviour
 
         }
     }
-    
+    */
 
 
     
