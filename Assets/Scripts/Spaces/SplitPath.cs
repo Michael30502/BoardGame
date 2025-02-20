@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class SplitPath : MonoBehaviour
+public class SplitPath : MonoBehaviour,SpaceActions
 {
 
-
+//    SecondSpace
 
 
 
