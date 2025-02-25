@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     public SpaceClass currentSpace;
     private int spaceToMove = 0;
     private bool block = false;
+    public bool playerAction = false;
+
+    public int money = 0;
+
     public Dice dice;  // Reference to the Dice script
 
     public SpaceClass makeChoice(ArrayList nextSpaces)
@@ -43,14 +47,30 @@ public class Player : MonoBehaviour
        //roll first, then walk anima
         yield return new WaitForSeconds(1.0f);
         dice.StopRolling(n); 
-
         yield return new WaitForSeconds(0.5f);
-        for (; n > 0; n--)
+        while (n > 0)
         {
+            if (!playerAction) { 
             currentSpace = currentSpace.nextSpaces;
             yield return new WaitForSeconds(1.5f);
+
+            if (currentSpace.spaceAction.getCountSpace())
+            {
+                n--;
+            }
+            else
+            {
+                    print("check");
+                currentSpace.spaceAction.action(this);
+                playerAction = true;
+            }
+        }
+            yield return new WaitForSeconds(1);
+
+
+
         }
         block = false;
-        print("Ready");
+        print("Ready current money: "+ money);
     }
 }
