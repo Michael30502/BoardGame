@@ -15,9 +15,9 @@ public class BlueSpace : MonoBehaviour,SpaceActions
 
         player.money += 1;
 
-        
-    
-    
+        print("You recieved 1 money!");
+
+
     }
 
     public bool getCountSpace()

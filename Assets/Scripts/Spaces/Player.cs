@@ -61,8 +61,9 @@ public class Player : MonoBehaviour
             else
             {
                     print("check");
-                currentSpace.spaceAction.action(this);
-                playerAction = true;
+                    playerAction = true;
+
+                    currentSpace.spaceAction.action(this);
             }
         }
             yield return new WaitForSeconds(1);
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour
 
 
         }
+        currentSpace.spaceAction.action(this);
         block = false;
         print("Ready current money: "+ money);
     }
