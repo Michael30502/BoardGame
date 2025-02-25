@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public bool playerAction = false;
 
     public int money = 0;
+    public int point = 0;
+
 
     public Dice dice;  // Reference to the Dice script
 

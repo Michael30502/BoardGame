@@ -4,8 +4,9 @@ using UnityEngine.UIElements;
 
 public class SplitPath : MonoBehaviour,SpaceActions
 {
+    public SpaceClass leftSpace;
+    public SpaceClass rightSpace;
 
-    public SpaceClass secondSpace;
 
 
 
@@ -51,8 +52,11 @@ public class SplitPath : MonoBehaviour,SpaceActions
             {
                 if (!leftPathSelected)
                 {
-                    player.currentSpace.nextSpaces = secondSpace;
+                    player.currentSpace.nextSpaces = rightSpace;
                 }
+                else { 
+                    player.currentSpace.nextSpaces = leftSpace;
+            }
                 block = false;
                 player.playerAction = false;
                 break;

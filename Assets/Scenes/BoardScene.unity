@@ -4816,6 +4816,7 @@ MonoBehaviour:
   currentSpace: {fileID: 1691560908}
   playerAction: 0
   money: 0
+  point: 0
   dice: {fileID: 1332781523}
 --- !u!1001 &516950891
 PrefabInstance:
@@ -13309,7 +13310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee51d39209768846802461e5c4e5ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondSpace: {fileID: 190203017}
+  leftSpace: {fileID: 790596054}
+  rightSpace: {fileID: 190203017}
 --- !u!1 &1997341214
 GameObject:
   m_ObjectHideFlags: 0
