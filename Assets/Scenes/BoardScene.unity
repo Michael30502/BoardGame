@@ -1322,7 +1322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
+  dollarPrefab: {fileID: 0}
+  fireVFXPrefab: {fileID: 0}
 --- !u!1 &94364011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,10 +1359,6 @@ Transform:
   - {fileID: 1667376891}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
-  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
 --- !u!1001 &101759319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1640,6 +1637,10 @@ PrefabInstance:
     - target: {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
       propertyPath: m_Name
       value: Dice_d6 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7826123901338310084, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
       propertyPath: m_RootOrder
@@ -4499,7 +4500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774403ed3e1456d469411095d9dd8ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
+  dollarPrefab: {fileID: 0}
 --- !u!1 &439935444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 50eb3f8e22c79af479733e4ecbe4cb53, type: 3}
@@ -4527,9 +4528,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
-=======
-  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
 --- !u!1 &441040505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4538,7 +4536,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 441040506}
+  - component: {fileID: 441040512}
   - component: {fileID: 441040509}
   - component: {fileID: 441040508}
   - component: {fileID: 441040507}
@@ -4551,21 +4549,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &441040506
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441040505}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 28.55, z: 25.5}
-  m_LocalScale: {x: 1, y: 0.01, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 884390115}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &441040507
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4670,6 +4653,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+--- !u!4 &441040512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441040505}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 28.5, z: 25.5}
+  m_LocalScale: {x: 1, y: 0.01, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 884390115}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &443009366
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,7 +5440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
+  dollarPrefab: {fileID: 0}
+  fireVFXPrefab: {fileID: 0}
 --- !u!1001 &544181907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5454,6 +5453,10 @@ PrefabInstance:
     - target: {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
       propertyPath: m_Name
       value: Dice_d6 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7826123901338310084, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
       propertyPath: m_RootOrder
@@ -5519,10 +5522,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1067792149}
   m_SourcePrefab: {fileID: 100100000, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
-=======
-  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
-  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
 --- !u!1001 &548521560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5981,7 +5980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774403ed3e1456d469411095d9dd8ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
+  dollarPrefab: {fileID: 0}
 --- !u!1 &668030132
 GameObject:
   m_ObjectHideFlags: 0
@@ -6034,9 +6033,6 @@ Transform:
   - {fileID: 1848989971}
   m_Father: {fileID: 782923613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
 --- !u!1001 &692132769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7287,7 +7283,7 @@ Transform:
   - {fileID: 1691560904}
   - {fileID: 1961115343}
   - {fileID: 1229716961}
-  - {fileID: 441040506}
+  - {fileID: 441040512}
   - {fileID: 654767146}
   - {fileID: 412397776}
   - {fileID: 1970604665}
@@ -7315,7 +7311,6 @@ Transform:
   - {fileID: 31771094}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1001 &890138520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7373,8 +7368,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa7b2f05ff853934ba710f281f292912, type: 3}
-=======
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
 --- !u!1001 &890988762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9425,17 +9418,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
   m_PrefabInstance: {fileID: 1188084897}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!4 &1209033391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af84c8a599f1636448c3a5c16baed5e1, type: 3}
   m_PrefabInstance: {fileID: 878252176}
-=======
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1211622750 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 251360847223958790, guid: c90d4598d37d91742b0fd7524fd53100, type: 3}
   m_PrefabInstance: {fileID: 4065949201092023795}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1217707797
 PrefabInstance:
@@ -10475,6 +10466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dice_d6
       objectReference: {fileID: 0}
+    - target: {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7826123901338310084, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -11132,6 +11127,10 @@ PrefabInstance:
     - target: {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
       propertyPath: m_Name
       value: Dice_d6 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7826123901338310084, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
       propertyPath: m_RootOrder
@@ -13617,7 +13616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774403ed3e1456d469411095d9dd8ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
+  dollarPrefab: {fileID: 0}
 --- !u!1001 &1847327250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13696,9 +13695,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ff1d64618840244448ff58fb0545714c, type: 3}
   m_PrefabInstance: {fileID: 1097212083}
   m_PrefabAsset: {fileID: 0}
-=======
-  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
 --- !u!1 &1850927364
 GameObject:
   m_ObjectHideFlags: 0
@@ -14041,7 +14037,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3899520030807063256, guid: 299e7a1cb6456cf4fa6079cf5978df9b, type: 3}
   m_PrefabInstance: {fileID: 1897754392}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &1905043227
 GameObject:
   m_ObjectHideFlags: 0
@@ -14094,6 +14089,11 @@ Transform:
   - {fileID: 1143152898}
   m_Father: {fileID: 782923613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1906554414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3185528268447461311, guid: 1e71aa8f721651d42a58b8dde55c6e6f, type: 3}
+  m_PrefabInstance: {fileID: 3522489678654977872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1908226049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14187,13 +14187,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 921c9ed4423a62145a6e00ecfdec1ff3, type: 3}
-=======
---- !u!1 &1906554414 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3185528268447461311, guid: 1e71aa8f721651d42a58b8dde55c6e6f, type: 3}
-  m_PrefabInstance: {fileID: 3522489678654977872}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
 --- !u!1001 &1916445248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14545,7 +14538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774403ed3e1456d469411095d9dd8ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
+  dollarPrefab: {fileID: 0}
 --- !u!1 &1968770783
 GameObject:
   m_ObjectHideFlags: 0
@@ -14598,9 +14591,6 @@ Transform:
   - {fileID: 1110779828}
   m_Father: {fileID: 782923613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc
 --- !u!1 &1970604663
 GameObject:
   m_ObjectHideFlags: 0
@@ -16569,16 +16559,11 @@ SceneRoots:
   - {fileID: 1099033777}
   - {fileID: 884390115}
   - {fileID: 1294286098}
-<<<<<<< HEAD
   - {fileID: 55431097}
   - {fileID: 572390094}
   - {fileID: 990737340}
   - {fileID: 782923613}
   - {fileID: 94364012}
-=======
-  - {fileID: 1332781520}
-  - {fileID: 390281828}
   - {fileID: 4065949201092023795}
   - {fileID: 3522489678654977872}
   - {fileID: 1079125958}
->>>>>>> 567dbb6769d16a6fa2b97be8b07bc3c3d2174bdc

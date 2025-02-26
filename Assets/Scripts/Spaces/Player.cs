@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public SpaceClass currentSpace;
     private int spaceToMove = 0;
-   private bool block = false;
+    public  bool block = true;
     public bool playerAction = false;
     
     public TurnController turnController;
@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
     IEnumerator RollDiceThenMove()
     {
         block = true;
+        dice.gameObject.SetActive(true);
+
         dice.StartRolling();
 
      
@@ -77,7 +79,6 @@ public class Player : MonoBehaviour
         yield return StartCoroutine(SwapSpace(ran));
 
        
-        dice.gameObject.SetActive(true);
     }
 
     IEnumerator SwapSpace(int n)
