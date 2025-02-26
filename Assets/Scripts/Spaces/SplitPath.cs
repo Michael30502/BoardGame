@@ -1,26 +1,20 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class SplitPath : MonoBehaviour,SpaceActions
+public class SplitPath : MonoBehaviour, SpaceActions
 {
     public SpaceClass leftSpace;
     public SpaceClass rightSpace;
 
-
-
-
-
-
-
-
-
+    [SerializeField] private GameObject pathSelectionCanvas; 
+    private Player currentPlayer; 
 
     public void action(Player player)
     {
-        StartCoroutine(makeChoice(player));
-        print("make selection");
-
+        currentPlayer = player; 
+        if (pathSelectionCanvas != null)
+        {
+            pathSelectionCanvas.SetActive(true); 
+        }
     }
 
     public bool getCountSpace()
@@ -28,45 +22,38 @@ public class SplitPath : MonoBehaviour,SpaceActions
         return false;
     }
 
-    IEnumerator makeChoice(Player player) {
-        print("check2");
-
-        bool block = true;
-        bool leftPathSelected = true;
-        while (block)
+    public void OnLeftPathButtonClick()
+    {
+        if (currentPlayer != null)
         {
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                leftPathSelected = true;
-                print("left path selected");
-
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                leftPathSelected = false;
-                print("right path selected");
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                if (!leftPathSelected)
-                {
-                    player.currentSpace.nextSpaces = rightSpace;
-                }
-                else { 
-                    player.currentSpace.nextSpaces = leftSpace;
-            }
-                block = false;
-                player.playerAction = false;
-                break;
-            }
-
-            yield return null;
-
-
+            currentPlayer.currentSpace.nextSpaces = leftSpace;
+            print("Left path selected");
+            CompleteSelection();
         }
-
     }
 
+   
+    public void OnRightPathButtonClick()
+    {
+        if (currentPlayer != null)
+        {
+            currentPlayer.currentSpace.nextSpaces = rightSpace;
+            print("Right path selected");
+            CompleteSelection();
+        }
+    }
+
+    
+    private void CompleteSelection()
+    {
+        if (pathSelectionCanvas != null)
+        {
+            pathSelectionCanvas.SetActive(false); // Hide UI canvas
+        }
+
+        if (currentPlayer != null)
+        {
+            currentPlayer.playerAction = false; // Allow player to continue
+        }
+    }
 }
