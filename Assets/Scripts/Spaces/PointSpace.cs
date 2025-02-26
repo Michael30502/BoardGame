@@ -1,71 +1,61 @@
-using System.Collections;
 using UnityEngine;
 
-public class PointSpace : MonoBehaviour,SpaceActions
+public class PointSpace : MonoBehaviour, SpaceActions
 {
+    [SerializeField] private GameObject VictoryPointMenu;
+    private Player currentPlayer; 
 
+    private int pointPrice = 5; 
 
+    public void action(Player player)
+    {
+        if (VictoryPointMenu != null)
+        {
+            currentPlayer = player; 
+            VictoryPointMenu.SetActive(true); 
+        }
+    }
 
+    
+    public void OnYesButtonClick()
+    {
+        if (currentPlayer != null && currentPlayer.money >= pointPrice)
+        {
+            currentPlayer.money -= pointPrice;
+            currentPlayer.point += 1;
+            print("You got a point!");
+        }
+        else
+        {
+            print("You cannot afford a point.");
+        }
 
+        CloseMenu();
+    }
 
+    
+    public void OnNoButtonClick()
+    {
+        print("You chose not to buy a point.");
+        CloseMenu();
+    }
 
+   
+    private void CloseMenu()
+    {
+        if (VictoryPointMenu != null)
+        {
+            VictoryPointMenu.SetActive(false);
+        }
 
-
-
-    public void action(Player player) {
-
-        StartCoroutine(makeChoice(player));
-
-
+        if (currentPlayer != null)
+        {
+            currentPlayer.playerAction = false; // Allow the player to continue
+        }
     }
 
     public bool getCountSpace()
     {
         return false;
     }
-
-    IEnumerator makeChoice(Player player)
-    {
-        int pointprice = 5;
-
-        print("Buy point for: " +pointprice+" money y/n");
-
-        bool block = true;
-        
-
-        while (block)
-        {
-
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                if (player.money >= pointprice)
-                {
-                    player.money -= pointprice;
-                    player.point += 1;
-                    print("You Got a Point!");
-                    break;
-                }
-                else {
-                    print("You Cannot afford a point");
-                    break;
-                }
-
-            }
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                break;            }
-
-
-
-            yield return null;
-
-
-        }
-        player.playerAction = false;
-
-
-
-    }
-
-
 }

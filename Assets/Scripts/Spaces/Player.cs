@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using System.Collections;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
@@ -8,15 +7,14 @@ public class Player : MonoBehaviour
 {
     public SpaceClass currentSpace;
     private int spaceToMove = 0;
-    public bool block = true;
+   private bool block = false;
     public bool playerAction = false;
     
     public TurnController turnController;
     public int money = 0;
     public int point = 0;
 
-
-    public Dice dice;  // Reference to the Dice script
+    public Dice dice;
 
     public SpaceClass makeChoice(ArrayList nextSpaces)
     {
@@ -25,7 +23,7 @@ public class Player : MonoBehaviour
 
     public void moveNSpaces(int n)
     {
-        StartCoroutine(SwapSpace(n)); 
+        StartCoroutine(RollDiceThenMove());
     }
 
     private void Update()
@@ -52,21 +50,38 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space) && block == false)
         {
-            int ran = UnityEngine.Random.Range(1, 7);
-            print("Rolled " + ran);
-
-            dice.StartRolling();
-            StartCoroutine(SwapSpace(ran));
-            block = true;
+            StartCoroutine(RollDiceThenMove());
         }
+    }
+
+    IEnumerator RollDiceThenMove()
+    {
+        block = true;
+        dice.StartRolling();
+
+     
+        yield return new WaitForSeconds(2.0f); // Adjust based on dice animation duration
+
+       
+        int ran = UnityEngine.Random.Range(1, 7);
+        print("Rolled " + ran);
+
+       
+        dice.StopRolling(ran);
+
+       
+        yield return new WaitForSeconds(1.0f);
+        dice.gameObject.SetActive(false);
+
+       
+        yield return StartCoroutine(SwapSpace(ran));
+
+       
+        dice.gameObject.SetActive(true);
     }
 
     IEnumerator SwapSpace(int n)
     {
-       //roll first, then walk anima
-        yield return new WaitForSeconds(1.0f);
-        dice.StopRolling(n); 
-        yield return new WaitForSeconds(0.5f);
         while (n > 0)
         {
             if (!playerAction)
@@ -82,16 +97,15 @@ public class Player : MonoBehaviour
                 {
                     print("check");
                     playerAction = true;
-
                     currentSpace.spaceAction.action(this);
                 }
             }
-            else { 
-            yield return new WaitForSeconds(1);
+            else
+            {
+                yield return new WaitForSeconds(1);
+            }
         }
 
-
-        }
         currentSpace.spaceAction.action(this);
         yield return new WaitForSeconds(2);
         print("Ready current money: "+ money);
