@@ -52,24 +52,26 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         while (n > 0)
         {
-            if (!playerAction) { 
-            currentSpace = currentSpace.nextSpaces;
-            yield return new WaitForSeconds(1.5f);
+            if (!playerAction)
+            {
+                currentSpace = currentSpace.nextSpaces;
+                yield return new WaitForSeconds(1.5f);
 
-            if (currentSpace.spaceAction.getCountSpace())
-            {
-                n--;
-            }
-            else
-            {
+                if (currentSpace.spaceAction.getCountSpace())
+                {
+                    n--;
+                }
+                else
+                {
                     print("check");
                     playerAction = true;
 
                     currentSpace.spaceAction.action(this);
+                }
             }
-        }
+            else { 
             yield return new WaitForSeconds(1);
-
+        }
 
 
         }

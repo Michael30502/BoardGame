@@ -48,7 +48,7 @@ public class SplitPath : MonoBehaviour,SpaceActions
                 print("right path selected");
             }
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
                 if (!leftPathSelected)
                 {
