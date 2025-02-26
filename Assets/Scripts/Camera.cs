@@ -2,20 +2,14 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-
     public Transform player;
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + new Vector3(0, 1, 10);
+        if (player == null) return;
+
+        
+        transform.position = player.position + new Vector3(-1.5f, 4, 2);
+        transform.rotation = Quaternion.Euler(40, -215, 0);
     }
 }
