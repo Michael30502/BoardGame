@@ -4,7 +4,7 @@ public class BlueSpace : MonoBehaviour,SpaceActions
 {
 
 
-
+    public GameObject dollarPrefab;
 
 
 
@@ -16,7 +16,10 @@ public class BlueSpace : MonoBehaviour,SpaceActions
         player.money += 1;
 
         print("You recieved 1 money!");
-
+        if (dollarPrefab != null)
+        {
+            GameObject dollar = Instantiate(dollarPrefab, player.transform.position, Quaternion.identity);
+        }
 
     }
 
