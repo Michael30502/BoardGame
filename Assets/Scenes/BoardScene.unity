@@ -763,6 +763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &42770643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1280,6 +1282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &101759319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2859,6 +2863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &256021016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4056,6 +4062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &421642232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4970,6 +4978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1 &531694119
 GameObject:
   m_ObjectHideFlags: 0
@@ -5246,6 +5256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &548521560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8762,6 +8774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &1252673205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8979,6 +8993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1 &1276162701
 GameObject:
   m_ObjectHideFlags: 0
@@ -9118,6 +9134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &1287528111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10290,6 +10308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &1421614816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12930,6 +12950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1 &1961115342
 GameObject:
   m_ObjectHideFlags: 0
@@ -13069,7 +13091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774403ed3e1456d469411095d9dd8ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dollarPrefab: {fileID: 0}
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
 --- !u!1 &1970604663
 GameObject:
   m_ObjectHideFlags: 0
@@ -13350,6 +13372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9535e60bda4f874231d57054902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dollarPrefab: {fileID: 6778818699244729315, guid: 5ab0bcb58322f2f48a6efe87981cade1, type: 3}
+  fireVFXPrefab: {fileID: 1781949194303238870, guid: 4e35892e4c5444340a0e2189311808e5, type: 3}
 --- !u!1001 &2003722108
 PrefabInstance:
   m_ObjectHideFlags: 0

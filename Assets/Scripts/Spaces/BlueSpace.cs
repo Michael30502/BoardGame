@@ -19,6 +19,7 @@ public class BlueSpace : MonoBehaviour,SpaceActions
         if (dollarPrefab != null)
         {
             GameObject dollar = Instantiate(dollarPrefab, player.transform.position, Quaternion.identity);
+            
         }
 
     }
