@@ -7,6 +7,7 @@ public class Dice : MonoBehaviour
     private bool isRolling = false;
     private int rolledNumber = 1;
 
+
     void Update()
     {
         transform.position = player.transform.position + new Vector3(0, 2.5f, 0);

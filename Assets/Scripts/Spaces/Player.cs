@@ -2,14 +2,16 @@ using UnityEngine;
 using System;
 using System.Collections;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
     public SpaceClass currentSpace;
     private int spaceToMove = 0;
-    private bool block = false;
+    public bool block = true;
     public bool playerAction = false;
-
+    
+    public TurnController turnController;
     public int money = 0;
     public int point = 0;
 
@@ -30,8 +32,23 @@ public class Player : MonoBehaviour
     {
         // Move player smoothly to current space
         Vector3 tempPos = currentSpace.transform.position;
+        Quaternion tempRot = Quaternion.Euler(0.0f, 180, 0);
+        Quaternion tempRot0 = Quaternion.Euler(0.0f, 0, 0);
+
+
         tempPos.y += 0.5f;
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, tempPos, 1 * Time.deltaTime);
+        if (!turnController.isMyTurn(this))
+        {
+            gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, tempRot, Time.deltaTime * 1);
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, tempPos + new Vector3(turnController.calculateOffSet(this), 0, 0), 1 * Time.deltaTime);
+
+
+        }
+        else {
+            gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, tempRot0, Time.deltaTime * 1);
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, tempPos, 1 * Time.deltaTime);
+
+        }
 
         if (Input.GetKeyUp(KeyCode.Space) && block == false)
         {
@@ -76,7 +93,11 @@ public class Player : MonoBehaviour
 
         }
         currentSpace.spaceAction.action(this);
-        block = false;
+        yield return new WaitForSeconds(2);
         print("Ready current money: "+ money);
+        turnController.currentPlayer++;
+        turnController.changePlayerTurn();
+
+
     }
 }
