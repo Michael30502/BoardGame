@@ -7,7 +7,7 @@ public class TurnController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     [SerializeField] public Player[] playerList;
-
+    [SerializeField] public GameObject gameModeSelectionMenuUI;
 
     public Camera cameras;
 
@@ -17,7 +17,10 @@ public class TurnController : MonoBehaviour
     void Start()
     {
         print("test2");
-        
+        if (gameModeSelectionMenuUI != null)
+        {
+            gameModeSelectionMenuUI.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -63,8 +66,13 @@ public class TurnController : MonoBehaviour
             case 5:
                 turn++;
                 changeTurn();
-                break;
 
+                // Enable game mode selection UI when a round has passed
+                if (gameModeSelectionMenuUI != null)
+                {
+                    gameModeSelectionMenuUI.SetActive(true);
+                }
+                break;
         }
 
     }

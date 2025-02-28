@@ -11,6 +11,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BoardScene.unity
     guid: a129dba9a20e20d4f967b4c11c305c61
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/Dropper.unity
+    guid: ad5c118547753d749a9872808bed6330
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/Simpsoncart.unity
+    guid: 5d6942198f435474f92db3b10aab862b
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/MiniGame 3.unity
+    guid: 5ff476b3a7d986546b9257782e0724c0
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/MiniGame 4.unity
+    guid: 391ef2593922cff4c8367bc525746eb8
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/MiniGame 5.unity
+    guid: bf3a7c24168e5a842ac090c149ef4635
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
