@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class FreeFallCharacter : MonoBehaviour
 {
-    public float fallSpeed = 20f; 
-    public float moveSpeed = 10f; 
+    public float fallSpeed = 20f;
+    public float moveSpeed = 45f; 
     public float gravity = 15f; 
 
     private CharacterController controller;
