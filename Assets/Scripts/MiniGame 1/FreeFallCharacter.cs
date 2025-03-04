@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class FreeFallCharacter : MonoBehaviour
 {
-    public float fallSpeed = 20f;
+    public float fallSpeed = 100f;
     public float moveSpeed = 45f; 
-    public float gravity = 15f; 
+    public float gravity = 35f; 
 
     private CharacterController controller;
     private Vector3 moveDirection;
