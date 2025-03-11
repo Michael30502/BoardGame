@@ -74,6 +74,7 @@ public class SplitPath : MonoBehaviour, SpaceActions
 
         block = true;
 
+        //TODO insert outline here (left)
 
         bool leftPathSelected = true;
 
@@ -94,6 +95,7 @@ public class SplitPath : MonoBehaviour, SpaceActions
 
 
                 leftPathSelected = true;
+                //TODO insert outline here (left)
 
 
                 print("left path selected");
@@ -110,6 +112,7 @@ public class SplitPath : MonoBehaviour, SpaceActions
 
             {
 
+                //TODO insert outline here (right)
 
                 leftPathSelected = false;
 

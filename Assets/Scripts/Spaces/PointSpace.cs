@@ -78,6 +78,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
 
 
         bool leftPathSelected = true;
+        //TODO insert outline here (left)
 
 
         while (block)
@@ -96,6 +97,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
 
 
                 leftPathSelected = true;
+                //TODO insert outline here (left)
 
 
                 print("left path selected");
@@ -112,9 +114,9 @@ public class PointSpace : MonoBehaviour, SpaceActions
 
             {
 
-
+                 
                 leftPathSelected = false;
-
+                //TODO insert outline here (right)
 
                 print("right path selected");
 
