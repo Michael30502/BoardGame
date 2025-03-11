@@ -1,22 +1,26 @@
+using System.Collections;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 public class PointSpace : MonoBehaviour, SpaceActions
 {
     [SerializeField] private GameObject VictoryPointMenu;
-    private Player currentPlayer; 
-
-    private int pointPrice = 5; 
+    private Player currentPlayer;
+    private bool block = false;
+    private int pointPrice = 5;
 
     public void action(Player player)
     {
         if (VictoryPointMenu != null)
         {
-            currentPlayer = player; 
-            VictoryPointMenu.SetActive(true); 
+            currentPlayer = player;
+            VictoryPointMenu.SetActive(true);
         }
+        StartCoroutine(makeChoice(player));
+
     }
 
-    
+
     public void OnYesButtonClick()
     {
         if (currentPlayer != null && currentPlayer.money >= pointPrice)
@@ -33,14 +37,14 @@ public class PointSpace : MonoBehaviour, SpaceActions
         CloseMenu();
     }
 
-    
+
     public void OnNoButtonClick()
     {
         print("You chose not to buy a point.");
         CloseMenu();
     }
 
-   
+
     private void CloseMenu()
     {
         if (VictoryPointMenu != null)
@@ -50,6 +54,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
 
         if (currentPlayer != null)
         {
+            block = false; //Ends the loop for selection
             currentPlayer.playerAction = false; // Allow the player to continue
         }
     }
@@ -57,5 +62,106 @@ public class PointSpace : MonoBehaviour, SpaceActions
     public bool getCountSpace()
     {
         return false;
+    }
+
+    IEnumerator makeChoice(Player player)
+    {
+
+
+        print("check2");
+
+
+
+
+
+        block = true;
+
+
+        bool leftPathSelected = true;
+
+
+        while (block)
+
+
+        {
+
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || (player.gamepad.dpad.left.isPressed) || player.gamepad.leftStick.left.isPressed)
+
+
+            {
+
+
+                leftPathSelected = true;
+
+
+                print("left path selected");
+
+
+
+
+
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.RightArrow) || (player.gamepad.dpad.right.isPressed) || player.gamepad.leftStick.right.isPressed)
+
+
+            {
+
+
+                leftPathSelected = false;
+
+
+                print("right path selected");
+
+
+            }
+
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || (player.gamepad.buttonSouth.isPressed))
+
+
+            {
+
+
+                if (!leftPathSelected)
+
+
+                {
+
+
+                    OnYesButtonClick();
+
+
+                }
+                else
+                {
+
+                    OnNoButtonClick();
+
+                }
+
+
+                block = false;
+
+
+                player.playerAction = false;
+
+
+                break;
+
+
+            }
+
+            yield return null;
+
+        }
     }
 }

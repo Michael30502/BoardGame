@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SplitPath : MonoBehaviour, SpaceActions
@@ -5,16 +6,18 @@ public class SplitPath : MonoBehaviour, SpaceActions
     public SpaceClass leftSpace;
     public SpaceClass rightSpace;
 
-    [SerializeField] private GameObject pathSelectionCanvas; 
-    private Player currentPlayer; 
+    [SerializeField] private GameObject pathSelectionCanvas;
+    private Player currentPlayer;
+    private bool block;
 
     public void action(Player player)
     {
-        currentPlayer = player; 
+        currentPlayer = player;
         if (pathSelectionCanvas != null)
         {
-            pathSelectionCanvas.SetActive(true); 
+            pathSelectionCanvas.SetActive(true);
         }
+        StartCoroutine(makeChoice(player));
     }
 
     public bool getCountSpace()
@@ -32,7 +35,7 @@ public class SplitPath : MonoBehaviour, SpaceActions
         }
     }
 
-   
+
     public void OnRightPathButtonClick()
     {
         if (currentPlayer != null)
@@ -43,7 +46,7 @@ public class SplitPath : MonoBehaviour, SpaceActions
         }
     }
 
-    
+
     private void CompleteSelection()
     {
         if (pathSelectionCanvas != null)
@@ -53,7 +56,123 @@ public class SplitPath : MonoBehaviour, SpaceActions
 
         if (currentPlayer != null)
         {
+            block = false;
             currentPlayer.playerAction = false; // Allow player to continue
         }
+    }
+
+
+    IEnumerator makeChoice(Player player)
+    {
+
+
+        print("check2");
+
+
+
+
+
+        block = true;
+
+
+        bool leftPathSelected = true;
+
+
+        while (block)
+
+
+        {
+
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow)|| (player.gamepad.dpad.left.isPressed)||player.gamepad.leftStick.left.isPressed)
+
+
+            {
+
+
+                leftPathSelected = true;
+
+
+                print("left path selected");
+
+
+
+
+
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.RightArrow) || (player.gamepad.dpad.right.isPressed)|| player.gamepad.leftStick.right.isPressed)
+
+
+            {
+
+
+                leftPathSelected = false;
+
+
+                print("right path selected");
+
+
+            }
+
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)||(player.gamepad.buttonSouth.isPressed))
+
+
+            {
+
+
+                if (!leftPathSelected)
+
+
+                {
+
+
+                    OnRightPathButtonClick();
+
+
+                }
+                else
+                {
+
+                    OnLeftPathButtonClick();
+
+                }
+
+
+                block = false;
+
+
+                player.playerAction = false;
+
+
+                break;
+
+
+            }
+
+
+
+
+
+            yield return null;
+
+
+
+
+
+
+
+
+        }
+
+
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TurnController : MonoBehaviour
@@ -21,6 +22,7 @@ public class TurnController : MonoBehaviour
         {
             gameModeSelectionMenuUI.SetActive(false);
         }
+        setAllGamepads();
     }
 
     // Update is called once per frame
@@ -32,6 +34,15 @@ public class TurnController : MonoBehaviour
         
     }
 
+    public void setAllGamepads()
+    {
+        for( int i = 0; i < playerList.Length; i++) {
+            if (Gamepad.all[i] != null)
+            {
+                playerList[i].gamepad = Gamepad.all[i];
+            }
+        }
+}
 
 
 

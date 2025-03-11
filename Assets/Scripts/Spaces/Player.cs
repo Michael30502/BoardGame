@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     public int point = 0;
 
     public Dice dice;
+    public Gamepad gamepad;
 
     public SpaceClass makeChoice(ArrayList nextSpaces)
     {
@@ -48,7 +50,7 @@ public class Player : MonoBehaviour
 
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && block == false)
+        if ((Input.GetKeyUp(KeyCode.Space)||gamepad.buttonSouth.IsPressed() ) && block == false)
         {
             StartCoroutine(RollDiceThenMove());
         }
@@ -80,6 +82,8 @@ public class Player : MonoBehaviour
 
        
     }
+
+    
 
     IEnumerator SwapSpace(int n)
     {
