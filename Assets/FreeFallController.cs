@@ -16,6 +16,7 @@ public class FreeFallController : MonoBehaviour
 
         foreach (var player in playerList)
         {
+           
             if (gamepadIndex < Gamepad.all.Count)
             {
                 player.SetGamepad(Gamepad.all[gamepadIndex]); // Assign gamepad in order
