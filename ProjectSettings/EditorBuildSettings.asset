@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MiniGames/Simpsoncart.unity
     guid: 5d6942198f435474f92db3b10aab862b
   - enabled: 1
-    path: Assets/Scenes/MiniGames/MiniGame 3.unity
+    path: Assets/Scenes/MiniGames/Gate-KeyPers.unity
     guid: 5ff476b3a7d986546b9257782e0724c0
   - enabled: 1
     path: Assets/Scenes/MiniGames/MiniGame 4.unity
