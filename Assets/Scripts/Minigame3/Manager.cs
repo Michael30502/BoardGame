@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -12,11 +13,17 @@ public class Manager : MonoBehaviour
     public bool active = false;
     public int turn = 1;
     public int currentPlayer = 0;
+    public int playersLeft = 4;
+    public string scene;
+    private List<int> playerOrder = new List<int>();
+    [SerializeField] private MinigameManager minigameManager;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        minigameManager = GameObject.Find("MinigameController").GetComponent<MinigameManager>();
+        minigameManager.mainSceneParent.SetActive(false);
 
         for (int i = 0; i < doors.Count; i++) {
 
@@ -53,6 +60,8 @@ public class Manager : MonoBehaviour
             door.gameObject.SetActive(false);
             key.gameObject.SetActive(false);
             players[currentPlayer].hasWon = true;
+            playerOrder.Add(currentPlayer);
+            playersLeft--;
 
         }
         else
@@ -63,6 +72,7 @@ public class Manager : MonoBehaviour
     }
     public void changePlayerTurn()
     {
+     
         currentPlayer++;
         if (currentPlayer > players.Count - 1)
         {
@@ -87,6 +97,16 @@ public class Manager : MonoBehaviour
             }
 
             }
+        if (playersLeft == 1)
+        {
+            playerOrder.Add(currentPlayer);
+            
+
+            minigameManager.mainSceneParent.SetActive(true);
+            minigameManager.SetPlayerMoney(playerOrder);
+            SceneManager.UnloadSceneAsync(scene);
+           
+        }
 
     }
 
