@@ -17,7 +17,8 @@ public class GameSelector : MonoBehaviour
     [SerializeField] private int minSpin = 6, maxSpin = 30; // Spicy Range for randomizatiopn
     [SerializeField] private Color highlightColor = Color.yellow; 
     [SerializeField] private Color defaultColor = Color.white;
-
+    [SerializeField] private int riggedDiceRoll = -1;
+    [SerializeField] private GameObject sceneParent;
     private int chosenIndex = 0;
     private TextMeshProUGUI[] buttonTexts;
 
@@ -63,6 +64,9 @@ public class GameSelector : MonoBehaviour
     private void StartSpin()
     {
         int spinCount = Random.Range(minSpin, maxSpin);
+        if (riggedDiceRoll != -1) {
+            spinCount = riggedDiceRoll;
+        }
         chosenIndex = spinCount % gameButtons.Length;
 
         StartCoroutine(SpinEffect(spinCount));
@@ -112,7 +116,8 @@ public class GameSelector : MonoBehaviour
         if (Application.CanStreamedLevelBeLoaded(selectedScene))
         {
             Debug.Log("Loading scene: " + selectedScene);
-            SceneManager.LoadScene(selectedScene);
+            SceneManager.LoadScene(selectedScene, LoadSceneMode.Additive);
+            gameObject.SetActive(false);
         }
         else
         {
