@@ -24,7 +24,7 @@ public class PlayerMinigame3 : MonoBehaviour
         else
             gameObject.GetComponentInChildren<Animator>().enabled = true;
 
-        //print(transform.rotation);
+        print(transform.rotation);
         Quaternion tempRot = Quaternion.Euler(0.0f, 180, 0);
         Quaternion tempRot0 = Quaternion.Euler(0.0f, 0, 0);
         //print(this);
