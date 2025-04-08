@@ -17,7 +17,7 @@ public class TurnController : MonoBehaviour
 
     void Start()
     {
-        print("test2");
+        //print("test2");
         if (gameModeSelectionMenuUI != null)
         {
             gameModeSelectionMenuUI.SetActive(false);

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public bool playerAction = false;
     
     public TurnController turnController;
-    public int money = 0;
+    public int money = 5;
     public int point = 0;
 
     public Dice dice;
