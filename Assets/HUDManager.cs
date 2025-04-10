@@ -15,7 +15,7 @@ public class HUDManager : MonoBehaviour
         public TextMeshProUGUI pointText;
     }
 
-    [SerializeField] private List<PlayerHUD> playerHUDs;
+    [SerializeField] public List<PlayerHUD> playerHUDs;
 
     private Dictionary<Player, (int points, int money)> previousStats = new();
 
@@ -47,7 +47,7 @@ public class HUDManager : MonoBehaviour
         return false;
     }
 
-    private void CacheCurrentStats()
+    public void CacheCurrentStats()
     {
         previousStats.Clear();
         foreach (var hud in playerHUDs)
