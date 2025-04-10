@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public interface Item
+public class Item: MonoBehaviour
 {
+    public new string name;
     public string Name{
-        set;
-        get;
+        set { name = value; }
+        get { return name; }
 }
-    void action(Player player){
+    public virtual void Action(Player player){
 
 
     }

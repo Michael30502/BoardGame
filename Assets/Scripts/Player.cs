@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 {
 
     public List<Item> items = new List<Item>();
-    public ChangeDie testItem; 
     public SpaceClass currentSpace;
     private int spaceToMove = 0;
     public int extraSpacesToMove;
@@ -22,8 +21,12 @@ public class Player : MonoBehaviour
     public TurnController turnController;
     public int money = 5;
     public int point = 0;
+    public int defaultDieType = 6;
 
+    public int dieType = 6;
     public Dice dice;
+    public Dice defaultdice;
+
     public Gamepad gamepad;
 
     public SpaceClass makeChoice(ArrayList nextSpaces)
@@ -38,8 +41,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        if (testItem!= null)
-        items.Add(testItem);
+       
     }
 
     private void Update()
@@ -81,16 +83,19 @@ public class Player : MonoBehaviour
     {
         int itemSelected = 0;
         block = true;
+        print("choose item");
         while (true)
         {
+            bool test = false;
             if (InputManager.InputLeft(gamepad) )
             {
                 itemSelected--;
-
+                test = true;
             }
             if (InputManager.InputRight(gamepad) )
             {
                 itemSelected++;
+                test = true;
             }
 
             if(itemSelected> items.Count-1)
@@ -100,19 +105,28 @@ public class Player : MonoBehaviour
             {
                 itemSelected = items.Count - 1;
             }
-            print(items[itemSelected].Name);
 
-            if(InputManager.InputSelect(gamepad))
+            if (test)
             {
-                items[itemSelected].action(this);
+                print(items[itemSelected].Name);
+
+            }
+
+            if (InputManager.InputSelect(gamepad))
+            {
+                print("test2");
+                items[itemSelected].Action(this);
                 items.RemoveAt(itemSelected);
                 yield return StartCoroutine(RollDiceThenMove());
+                break;
 
                 
             }
             if (InputManager.InputCancel(gamepad))
             {
                 yield return StartCoroutine(RollDiceThenMove());
+                break;
+
 
             }
 
@@ -125,24 +139,26 @@ public class Player : MonoBehaviour
     IEnumerator RollDiceThenMove()
     {
         block = true;
-        dice.gameObject.SetActive(true);
+        Dice dieObject = GameObject.Instantiate(dice);
+        dieObject.player = transform;
 
-        dice.StartRolling();
+        dieObject.StartRolling();
 
      
         yield return new WaitForSeconds(2.0f); // Adjust based on dice animation duration
 
        
-        int ran = UnityEngine.Random.Range(1, 7);
+        int ran = UnityEngine.Random.Range(1, dieType+1);
         print("Rolled " + ran);
 
-       
-        dice.StopRolling(ran);
+
+        dieObject.StopRolling(ran);
 
        
         yield return new WaitForSeconds(1.0f);
-        dice.gameObject.SetActive(false);
-
+        DestroyImmediate(dieObject.gameObject);
+        dice = defaultdice;
+        dieType = 6;
        
         yield return StartCoroutine(SwapSpace(ran));
 

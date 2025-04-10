@@ -1,19 +1,16 @@
 using UnityEngine;
 
-public class ChangeDie : MonoBehaviour,Item
+public class ChangeDie : Item
 {
 
-    Dice die;
-    public new string name;
-    public string Name {
-        get { return name; }
-        set { name = value; }
-    }
-
-    void action(Player player)
+    public Dice die;
+    public int dieType;
+   
+   public override void Action(Player player)
     {
-        player.dice = die;
 
+        player.dice = die;
+        player.dieType = dieType;
     }
 
 
