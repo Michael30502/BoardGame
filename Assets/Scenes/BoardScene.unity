@@ -47635,7 +47635,7 @@ MonoBehaviour:
   money: 0
   point: 0
   defaultDieType: 6
-  dieType: 0
+  dieType: 6
   dice: {fileID: 7013180098091326029, guid: 3f0ab6de93f551e47840e368af0ae6ad, type: 3}
   defaultdice: {fileID: 7013180098091326029, guid: 3f0ab6de93f551e47840e368af0ae6ad, type: 3}
 --- !u!4 &2234000285413155082
@@ -48762,7 +48762,7 @@ MonoBehaviour:
   money: 0
   point: 0
   defaultDieType: 6
-  dieType: 0
+  dieType: 6
   dice: {fileID: 7013180098091326029, guid: 3f0ab6de93f551e47840e368af0ae6ad, type: 3}
   defaultdice: {fileID: 7013180098091326029, guid: 3f0ab6de93f551e47840e368af0ae6ad, type: 3}
 --- !u!4 &3757978690149619190
@@ -50494,7 +50494,7 @@ MonoBehaviour:
   money: 0
   point: 0
   defaultDieType: 6
-  dieType: 0
+  dieType: 6
   dice: {fileID: 7013180098091326029, guid: 3f0ab6de93f551e47840e368af0ae6ad, type: 3}
   defaultdice: {fileID: 7013180098091326029, guid: 3f0ab6de93f551e47840e368af0ae6ad, type: 3}
 --- !u!1 &6268524925574892889
@@ -51629,7 +51629,7 @@ MonoBehaviour:
   money: 0
   point: 0
   defaultDieType: 6
-  dieType: 0
+  dieType: 6
   dice: {fileID: 7013180098091326029, guid: 3f0ab6de93f551e47840e368af0ae6ad, type: 3}
   defaultdice: {fileID: 7013180098091326029, guid: 3f0ab6de93f551e47840e368af0ae6ad, type: 3}
 --- !u!1 &8220974824224507008

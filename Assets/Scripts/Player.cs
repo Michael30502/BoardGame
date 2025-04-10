@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         DestroyImmediate(dieObject.gameObject);
         dice = defaultdice;
-        dieType = 6;
+        dieType = defaultDieType;
        
         yield return StartCoroutine(SwapSpace(ran));
 
