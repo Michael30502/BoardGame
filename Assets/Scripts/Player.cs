@@ -132,16 +132,20 @@ public class Player : MonoBehaviour
         int ran = UnityEngine.Random.Range(1, dieType+1);
         
         print("Rolled " + ran);
-        ran += extraSpacesToMove;
-        if (extraSpacesToMove != 0) {
-            print("player moves an additional " + extraSpacesToMove + "spaces");
-        }
-        extraSpacesToMove = 0;
+   
         
 
         dieObject.StopRolling(ran);
 
-       
+        //adds extra moves from items
+        ran += extraSpacesToMove;
+        if (extraSpacesToMove != 0)
+        {
+            print("player moves an additional " + extraSpacesToMove + "spaces");
+        }
+        extraSpacesToMove = 0;
+
+
         yield return new WaitForSeconds(1.0f);
         DestroyImmediate(dieObject.gameObject);
         dice = defaultdice;
