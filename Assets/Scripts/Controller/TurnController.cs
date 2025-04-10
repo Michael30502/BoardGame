@@ -37,7 +37,7 @@ public class TurnController : MonoBehaviour
     public void setAllGamepads()
     {
         for( int i = 0; i < playerList.Length; i++) {
-            if (Gamepad.all[i] != null)
+            if (Gamepad.all.Count >i)
             {
                 playerList[i].gamepad = Gamepad.all[i];
             }
@@ -113,7 +113,7 @@ public class TurnController : MonoBehaviour
                 list[i] = true;
             }
         }
-        print(list[0] + " " + list[1] + " " + list[2] + " " + list[3]);
+        //print(list[0] + " " + list[1] + " " + list[2] + " " + list[3]);
 
         int playerNo =checkPlayerNumber(player);
         if (count > 1)

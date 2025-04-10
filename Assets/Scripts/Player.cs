@@ -3,13 +3,21 @@ using System.Collections;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using NUnit.Framework.Internal.Commands;
 
 public class Player : MonoBehaviour
 {
+
+    public List<Item> items = new List<Item>();
+    public ChangeDie testItem; 
     public SpaceClass currentSpace;
     private int spaceToMove = 0;
+    public int extraSpacesToMove;
     public  bool block = true;
     public bool playerAction = false;
+
     
     public TurnController turnController;
     public int money = 5;
@@ -28,6 +36,12 @@ public class Player : MonoBehaviour
         StartCoroutine(RollDiceThenMove());
     }
 
+    private void Start()
+    {
+        if (testItem!= null)
+        items.Add(testItem);
+    }
+
     private void Update()
     {
         // Move player smoothly to current space
@@ -35,7 +49,7 @@ public class Player : MonoBehaviour
         Quaternion tempRot = Quaternion.Euler(0.0f, 180, 0);
         Quaternion tempRot0 = Quaternion.Euler(0.0f, 0, 0);
 
-
+        //Removes the players of a space, when it is not their turn
         tempPos.y += 0.5f;
         if (!turnController.isMyTurn(this))
         {
@@ -44,16 +58,68 @@ public class Player : MonoBehaviour
 
 
         }
-        else {
+        else
+        {
             gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, tempRot0, Time.deltaTime * 1);
             gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, tempPos, 1 * Time.deltaTime);
 
         }
-
-        if ((Input.GetKeyUp(KeyCode.Space)||gamepad.buttonSouth.IsPressed() ) && block == false)
+        if (items.Count == 0) { 
+        if (InputManager.InputSelect(gamepad) && block == false)
         {
             StartCoroutine(RollDiceThenMove());
         }
+            
+    }
+        else if (!block)
+        {
+            StartCoroutine(ChooseItem());
+        }
+    }
+
+    IEnumerator ChooseItem()
+    {
+        int itemSelected = 0;
+        block = true;
+        while (true)
+        {
+            if (InputManager.InputLeft(gamepad) )
+            {
+                itemSelected--;
+
+            }
+            if (InputManager.InputRight(gamepad) )
+            {
+                itemSelected++;
+            }
+
+            if(itemSelected> items.Count-1)
+            {
+                itemSelected = 0;
+            } else if (itemSelected < 0)
+            {
+                itemSelected = items.Count - 1;
+            }
+            print(items[itemSelected].Name);
+
+            if(InputManager.InputSelect(gamepad))
+            {
+                items[itemSelected].action(this);
+                items.RemoveAt(itemSelected);
+                yield return StartCoroutine(RollDiceThenMove());
+
+                
+            }
+            if (InputManager.InputCancel(gamepad))
+            {
+                yield return StartCoroutine(RollDiceThenMove());
+
+            }
+
+            yield return null;
+        }
+
+
     }
 
     IEnumerator RollDiceThenMove()
