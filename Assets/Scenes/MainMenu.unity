@@ -4847,6 +4847,56 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262940825}
   m_Enabled: 1
+--- !u!1 &263433266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263433268}
+  - component: {fileID: 263433267}
+  m_Layer: 0
+  m_Name: GameOptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &263433267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263433266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac37eef261671aa4eb66374350476576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rounds: 0
+  players:
+  - {fileID: 3181180694338623325, guid: 39e233b9bd4c9fd499fb9a03172b4ade, type: 3}
+  - {fileID: 3181180694338623325, guid: 39e233b9bd4c9fd499fb9a03172b4ade, type: 3}
+  - {fileID: 3181180694338623325, guid: 39e233b9bd4c9fd499fb9a03172b4ade, type: 3}
+  - {fileID: 3181180694338623325, guid: 39e233b9bd4c9fd499fb9a03172b4ade, type: 3}
+--- !u!4 &263433268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263433266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.6608706, y: 3.6983075, z: -2.8711836}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &263527847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9069115365609054727, guid: 60f79905accf3b24fa0114b941f1aac0, type: 3}
@@ -11886,13 +11936,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2900f51797bb85d46bdbbd66078af623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
   currentSpace: {fileID: 0}
+  extraSpacesToMove: 0
   block: 1
   playerAction: 0
   turnController: {fileID: 0}
   money: 0
   point: 0
+  defaultDieType: 6
+  dieType: 6
   dice: {fileID: 0}
+  defaultdice: {fileID: 0}
 --- !u!4 &710297585
 Transform:
   m_ObjectHideFlags: 0
@@ -20130,13 +20185,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2900f51797bb85d46bdbbd66078af623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
   currentSpace: {fileID: 0}
+  extraSpacesToMove: 0
   block: 1
   playerAction: 0
   turnController: {fileID: 0}
   money: 0
   point: 0
+  defaultDieType: 6
+  dieType: 6
   dice: {fileID: 0}
+  defaultdice: {fileID: 0}
 --- !u!4 &1155491836
 Transform:
   m_ObjectHideFlags: 0
@@ -30007,13 +30067,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2900f51797bb85d46bdbbd66078af623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
   currentSpace: {fileID: 0}
+  extraSpacesToMove: 0
   block: 1
   playerAction: 0
   turnController: {fileID: 0}
   money: 0
   point: 0
+  defaultDieType: 6
+  dieType: 6
   dice: {fileID: 0}
+  defaultdice: {fileID: 0}
 --- !u!4 &1676242089
 Transform:
   m_ObjectHideFlags: 0
@@ -39114,3 +39179,4 @@ SceneRoots:
   - {fileID: 1676242089}
   - {fileID: 710297585}
   - {fileID: 1155491836}
+  - {fileID: 263433268}

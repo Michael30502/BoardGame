@@ -25,7 +25,8 @@ public class TurnController : MonoBehaviour
         setAllGamepads();
         GameOptions gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
         if (gameOptions != null) {
-            for (int i = 0; i < playerList.Length; i++) {
+            print(gameOptions.players.Count);
+            for (int i = 0; i < gameOptions.players.Count; i++) {
                 Destroy(playerList[i].transform.GetChild(0).gameObject);
                 GameObject playerInstance = Instantiate(gameOptions.players[i]);
                 playerInstance.transform.SetParent(playerList[i].gameObject.transform, false);
