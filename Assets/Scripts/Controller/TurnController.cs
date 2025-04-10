@@ -23,6 +23,14 @@ public class TurnController : MonoBehaviour
             gameModeSelectionMenuUI.SetActive(false);
         }
         setAllGamepads();
+        GameOptions gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
+        if (gameOptions != null) {
+            for (int i = 0; i < playerList.Length; i++) {
+                Destroy(playerList[i].transform.GetChild(0).gameObject);
+                GameObject playerInstance = Instantiate(gameOptions.players[i]);
+                playerInstance.transform.SetParent(playerList[i].gameObject.transform, false);
+            }
+        }
     }
 
     // Update is called once per frame
