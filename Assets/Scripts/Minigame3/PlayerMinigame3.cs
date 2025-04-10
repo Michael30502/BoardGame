@@ -57,7 +57,7 @@ public class PlayerMinigame3 : MonoBehaviour
         bool block = true;
         while (block)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            if (InputManager.InputLeft(gamePad))
             {
 
                 selection--;
@@ -65,7 +65,7 @@ public class PlayerMinigame3 : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            if (InputManager.InputLeft(gamePad))
             {
                 selection++;
 
@@ -94,7 +94,7 @@ public class PlayerMinigame3 : MonoBehaviour
 
             }
 
-            if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
+            if (InputManager.InputSelect(gamePad))
             {
                 Input.ResetInputAxes();
 
@@ -116,7 +116,7 @@ public class PlayerMinigame3 : MonoBehaviour
         bool block = true;
         while (block)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            if (InputManager.InputLeft(gamePad))
             {
 
                 selection--;
@@ -124,7 +124,7 @@ public class PlayerMinigame3 : MonoBehaviour
 
             }
 
-            if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+            if (InputManager.InputRight(gamePad))
             {
                 selection++;
 
@@ -152,7 +152,7 @@ public class PlayerMinigame3 : MonoBehaviour
                     manager.doors[i].selected = false;
 
             }
-            if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
+            if (InputManager.InputSelect(gamePad))
             {
                 manager.checkKeyPair(manager.doors[selection], manager.keys[keySelection]);
                 manager.doors[selection].selected = false;
