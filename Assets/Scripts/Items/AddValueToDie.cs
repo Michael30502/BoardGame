@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class AddValueToDie : MonoBehaviour
+public class AddValueToDie : Item
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int value;
+
+    public override void Action(Player player)
     {
-        
+        player.extraSpacesToMove = value;
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }
