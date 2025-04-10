@@ -11,7 +11,7 @@ public class RedSpace : MonoBehaviour,SpaceActions
 
 
 
-    public void action(Player player) {
+    public void Action(Player player) {
 
         player.money -= 1;
         if (player.money < 0) {
@@ -37,7 +37,7 @@ public class RedSpace : MonoBehaviour,SpaceActions
 
     }
 
-    public bool getCountSpace()
+    public bool GetCountSpace()
     {
         return true;
     }

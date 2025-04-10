@@ -9,7 +9,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
     private bool block = false;
     private int pointPrice = 5;
 
-    public void action(Player player)
+    public void Action(Player player)
     {
         if (VictoryPointMenu != null)
         {
@@ -59,7 +59,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
         }
     }
 
-    public bool getCountSpace()
+    public bool GetCountSpace()
     {
         return false;
     }

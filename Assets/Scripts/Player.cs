@@ -81,37 +81,18 @@ public class Player : MonoBehaviour
 
     IEnumerator ChooseItem()
     {
-        int itemSelected = 0;
+        
         block = true;
         print("choose item");
+        int itemSelected = 0;
         while (true)
         {
-            bool test = false;
-            if (InputManager.InputLeft(gamepad) )
+            int tempValue = ChooseOption.Choose(itemSelected, items.Count, gamepad);
+            if (itemSelected != tempValue)
             {
-                itemSelected--;
-                test = true;
+                itemSelected = tempValue;
+                print(items[itemSelected].name);
             }
-            if (InputManager.InputRight(gamepad) )
-            {
-                itemSelected++;
-                test = true;
-            }
-
-            if(itemSelected> items.Count-1)
-            {
-                itemSelected = 0;
-            } else if (itemSelected < 0)
-            {
-                itemSelected = items.Count - 1;
-            }
-
-            if (test)
-            {
-                print(items[itemSelected].Name);
-
-            }
-
             if (InputManager.InputSelect(gamepad))
             {
                 print("test2");
@@ -149,8 +130,14 @@ public class Player : MonoBehaviour
 
        
         int ran = UnityEngine.Random.Range(1, dieType+1);
+        
         print("Rolled " + ran);
-
+        ran += extraSpacesToMove;
+        if (extraSpacesToMove != 0) {
+            print("player moves an additional " + extraSpacesToMove + "spaces");
+        }
+        extraSpacesToMove = 0;
+        
 
         dieObject.StopRolling(ran);
 
@@ -176,7 +163,7 @@ public class Player : MonoBehaviour
                 currentSpace = currentSpace.nextSpaces;
                 yield return new WaitForSeconds(1.5f);
 
-                if (currentSpace.spaceAction.getCountSpace())
+                if (currentSpace.spaceAction.GetCountSpace())
                 {
                     n--;
                 }
@@ -184,7 +171,7 @@ public class Player : MonoBehaviour
                 {
                     print("check");
                     playerAction = true;
-                    currentSpace.spaceAction.action(this);
+                    currentSpace.spaceAction.Action(this);
                 }
             }
             else
@@ -193,7 +180,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        currentSpace.spaceAction.action(this);
+        currentSpace.spaceAction.Action(this);
         yield return new WaitForSeconds(2);
         print("Ready current money: "+ money);
         turnController.currentPlayer++;
