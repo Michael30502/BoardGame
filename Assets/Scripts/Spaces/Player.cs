@@ -3,8 +3,9 @@ using System.Collections;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.InputSystem;
+using System;             
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IComparable<Player> 
 {
     public SpaceClass currentSpace;
     private int spaceToMove = 0;
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     public TurnController turnController;
     public int money = 0;
     public int point = 0;
+    public int id = 0;
+    public int position = 0;
 
     public Dice dice;
     public Gamepad gamepad;
@@ -27,6 +30,17 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(RollDiceThenMove());
     }
+    public int CompareTo(Player other)
+{
+    if (point != other.point)
+        return other.point.CompareTo(point);
+
+    if (money != other.money)
+        return other.money.CompareTo(money);
+
+    // Tie-breaker: Compare by player ID or name to ensure consistent ordering
+    return id.CompareTo(other.id); // Assuming each player has a unique ID
+}
 
     private void Update()
     {

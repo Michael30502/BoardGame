@@ -10,13 +10,25 @@ public class TurnController : MonoBehaviour
     [SerializeField] public Player[] playerList;
     [SerializeField] public GameObject gameModeSelectionMenuUI;
 
+
+public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
+
+
+
     public Camera cameras;
+
 
     public int turn =0;
     public int currentPlayer = 1;
 
     void Start()
     {
+     
+        playerList[0].id = 1;
+        playerList[1].id = 2;
+        playerList[2].id = 3;
+        playerList[3].id = 4;
+
         print("test2");
         if (gameModeSelectionMenuUI != null)
         {
@@ -176,6 +188,16 @@ public class TurnController : MonoBehaviour
 
        
     }
+      public void updatePlayerGuide()
+    {
+    
+    for (int i = 0; i < playerList.Length; i++)
+    {
+    
+    }
+    
+}
+    
 
 
 }
