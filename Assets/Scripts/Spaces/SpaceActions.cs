@@ -3,11 +3,11 @@ using UnityEngine;
 public interface SpaceActions
 {
 
-    bool getCountSpace();
+    bool GetCountSpace();
 
 
 
-    void action(Player player);
+    void Action(Player player);
 
 
 }

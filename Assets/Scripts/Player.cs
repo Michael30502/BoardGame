@@ -4,21 +4,33 @@ using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.InputSystem;
 using System;             
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using NUnit.Framework.Internal.Commands;
 
 public class Player : MonoBehaviour, IComparable<Player> 
 {
+
+    public List<Item> items = new List<Item>();
     public SpaceClass currentSpace;
     private int spaceToMove = 0;
+    public int extraSpacesToMove;
     public  bool block = true;
     public bool playerAction = false;
+
     
     public TurnController turnController;
-    public int money = 0;
+    public int money = 5;
     public int point = 0;
     public int id = 0;
     public int position = 0;
+    public int defaultDieType = 6;
 
+
+    public int dieType = 6;
     public Dice dice;
+    public Dice defaultdice;
+
     public Gamepad gamepad;
 
     public SpaceClass makeChoice(ArrayList nextSpaces)
@@ -42,6 +54,11 @@ public class Player : MonoBehaviour, IComparable<Player>
     return id.CompareTo(other.id); // Assuming each player has a unique ID
 }
 
+    private void Start()
+    {
+       
+    }
+
     private void Update()
     {
         // Move player smoothly to current space
@@ -49,7 +66,7 @@ public class Player : MonoBehaviour, IComparable<Player>
         Quaternion tempRot = Quaternion.Euler(0.0f, 180, 0);
         Quaternion tempRot0 = Quaternion.Euler(0.0f, 0, 0);
 
-
+        //Removes the players of a space, when it is not their turn
         tempPos.y += 0.5f;
         if (!turnController.isMyTurn(this))
         {
@@ -58,39 +75,96 @@ public class Player : MonoBehaviour, IComparable<Player>
 
 
         }
-        else {
+        else
+        {
             gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, tempRot0, Time.deltaTime * 1);
             gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, tempPos, 1 * Time.deltaTime);
 
         }
-
-        if ((Input.GetKeyUp(KeyCode.Space)||gamepad.buttonSouth.IsPressed() ) && block == false)
+        if (items.Count == 0) { 
+        if (InputManager.InputSelect(gamepad) && block == false)
         {
             StartCoroutine(RollDiceThenMove());
         }
+            
+    }
+        else if (!block)
+        {
+            StartCoroutine(ChooseItem());
+        }
+    }
+
+    IEnumerator ChooseItem()
+    {
+        
+        block = true;
+        print("choose item");
+        int itemSelected = 0;
+        while (true)
+        {
+            int tempValue = ChooseOption.Choose(itemSelected, items.Count, gamepad);
+            if (itemSelected != tempValue)
+            {
+                itemSelected = tempValue;
+                print(items[itemSelected].name);
+            }
+            if (InputManager.InputSelect(gamepad))
+            {
+                print("test2");
+                items[itemSelected].Action(this);
+                items.RemoveAt(itemSelected);
+                yield return StartCoroutine(RollDiceThenMove());
+                break;
+
+                
+            }
+            if (InputManager.InputCancel(gamepad))
+            {
+                yield return StartCoroutine(RollDiceThenMove());
+                break;
+
+
+            }
+
+            yield return null;
+        }
+
+
     }
 
     IEnumerator RollDiceThenMove()
     {
         block = true;
-        dice.gameObject.SetActive(true);
+        Dice dieObject = GameObject.Instantiate(dice);
+        dieObject.player = transform;
 
-        dice.StartRolling();
+        dieObject.StartRolling();
 
      
         yield return new WaitForSeconds(2.0f); // Adjust based on dice animation duration
 
        
-        int ran = UnityEngine.Random.Range(1, 7);
+        int ran = UnityEngine.Random.Range(1, dieType+1);
+        
         print("Rolled " + ran);
+   
+        
 
-       
-        dice.StopRolling(ran);
+        dieObject.StopRolling(ran);
 
-       
+        //adds extra moves from items
+        ran += extraSpacesToMove;
+        if (extraSpacesToMove != 0)
+        {
+            print("player moves an additional " + extraSpacesToMove + "spaces");
+        }
+        extraSpacesToMove = 0;
+
+
         yield return new WaitForSeconds(1.0f);
-        dice.gameObject.SetActive(false);
-
+        DestroyImmediate(dieObject.gameObject);
+        dice = defaultdice;
+        dieType = defaultDieType;
        
         yield return StartCoroutine(SwapSpace(ran));
 
@@ -108,7 +182,7 @@ public class Player : MonoBehaviour, IComparable<Player>
                 currentSpace = currentSpace.nextSpaces;
                 yield return new WaitForSeconds(1.5f);
 
-                if (currentSpace.spaceAction.getCountSpace())
+                if (currentSpace.spaceAction.GetCountSpace())
                 {
                     n--;
                 }
@@ -116,7 +190,7 @@ public class Player : MonoBehaviour, IComparable<Player>
                 {
                     print("check");
                     playerAction = true;
-                    currentSpace.spaceAction.action(this);
+                    currentSpace.spaceAction.Action(this);
                 }
             }
             else
@@ -125,7 +199,7 @@ public class Player : MonoBehaviour, IComparable<Player>
             }
         }
 
-        currentSpace.spaceAction.action(this);
+        currentSpace.spaceAction.Action(this);
         yield return new WaitForSeconds(2);
         print("Ready current money: "+ money);
         turnController.currentPlayer++;

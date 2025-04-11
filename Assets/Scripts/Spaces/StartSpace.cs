@@ -11,14 +11,14 @@ public class StartSpace : MonoBehaviour,SpaceActions
 
 
 
-    public void action(Player player) {
+    public void Action(Player player) {
 
         player.playerAction = false;
     
     
     }
 
-    public bool getCountSpace()
+    public bool GetCountSpace()
     {
         return false;
     }

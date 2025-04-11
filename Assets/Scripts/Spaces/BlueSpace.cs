@@ -11,7 +11,7 @@ public class BlueSpace : MonoBehaviour,SpaceActions
 
 
 
-    public void action(Player player) {
+    public void Action(Player player) {
 
         player.money += 1;
 
@@ -24,7 +24,7 @@ public class BlueSpace : MonoBehaviour,SpaceActions
 
     }
 
-    public bool getCountSpace()
+    public bool GetCountSpace()
     {
         return true;
     }

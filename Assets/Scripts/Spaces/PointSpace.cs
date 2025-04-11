@@ -9,7 +9,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
     private bool block = false;
     private int pointPrice = 5;
 
-    public void action(Player player)
+    public void Action(Player player)
     {
         if (VictoryPointMenu != null)
         {
@@ -59,7 +59,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
         }
     }
 
-    public bool getCountSpace()
+    public bool GetCountSpace()
     {
         return false;
     }
@@ -90,7 +90,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
 
 
 
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || (player.gamepad.dpad.left.isPressed) || player.gamepad.leftStick.left.isPressed)
+            if (InputManager.InputLeft(player.gamepad))
 
 
             {
@@ -109,7 +109,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
             }
 
 
-            if (Input.GetKeyDown(KeyCode.RightArrow) || (player.gamepad.dpad.right.isPressed) || player.gamepad.leftStick.right.isPressed)
+            if (InputManager.InputRight(player.gamepad))
 
 
             {
@@ -127,7 +127,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
 
 
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || (player.gamepad.buttonSouth.isPressed))
+            if (InputManager.InputSelect(player.gamepad))
 
 
             {

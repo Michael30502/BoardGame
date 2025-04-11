@@ -23,18 +23,26 @@ public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
 
     void Start()
     {
+
      
         playerList[0].id = 1;
         playerList[1].id = 2;
         playerList[2].id = 3;
         playerList[3].id = 4;
 
-        print("test2");
-        if (gameModeSelectionMenuUI != null)
         {
             gameModeSelectionMenuUI.SetActive(false);
         }
         setAllGamepads();
+        GameOptions gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
+        if (gameOptions != null) {
+            print(gameOptions.players.Count);
+            for (int i = 0; i < gameOptions.players.Count; i++) {
+                Destroy(playerList[i].transform.GetChild(0).gameObject);
+                GameObject playerInstance = Instantiate(gameOptions.players[i]);
+                playerInstance.transform.SetParent(playerList[i].gameObject.transform, false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -49,7 +57,7 @@ public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
     public void setAllGamepads()
     {
         for( int i = 0; i < playerList.Length; i++) {
-            if (Gamepad.all[i] != null)
+            if (Gamepad.all.Count >i)
             {
                 playerList[i].gamepad = Gamepad.all[i];
             }
@@ -125,7 +133,7 @@ public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
                 list[i] = true;
             }
         }
-        print(list[0] + " " + list[1] + " " + list[2] + " " + list[3]);
+        //print(list[0] + " " + list[1] + " " + list[2] + " " + list[3]);
 
         int playerNo =checkPlayerNumber(player);
         if (count > 1)
