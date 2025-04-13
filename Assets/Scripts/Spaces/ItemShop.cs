@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class ItemShop : MonoBehaviour, SpaceActions
 {
-  
     public List<Item> shop = new List<Item>();
 
     [SerializeField] public GameObject ShopWindowCamera;
 
     [SerializeField] private List<GameObject> shopItem3DObjects;
 
-    
     private AudioSource audioSource;
 
     [SerializeField] private AudioClip GreetingsCustomerClip;
@@ -19,7 +17,8 @@ public class ItemShop : MonoBehaviour, SpaceActions
     [SerializeField] private AudioClip BuyBeerClip;
     [SerializeField] private AudioClip BuyD10Clip;
 
-   
+    private GameObject previouslyHighlightedObject = null;
+
     public void Action(Player player)
     {
         audioSource = GetComponent<AudioSource>();
@@ -30,13 +29,11 @@ public class ItemShop : MonoBehaviour, SpaceActions
         StartCoroutine(Shop(player));
     }
 
-    
     public bool GetCountSpace()
     {
         return false;
     }
 
-   
     IEnumerator Shop(Player player)
     {
         Debug.Log("Buy Something!!!");
@@ -46,12 +43,52 @@ public class ItemShop : MonoBehaviour, SpaceActions
 
         int itemSelected = 0;
 
+      
+        if (shopItem3DObjects != null && shopItem3DObjects.Count > 0)
+        {
+            foreach (var itemObj in shopItem3DObjects)
+            {
+                if (itemObj != null)
+                {
+                    Outline outline = itemObj.GetComponentInChildren<Outline>();
+                    if (outline != null)
+                        outline.enabled = false;
+                }
+            }
+
+            previouslyHighlightedObject = shopItem3DObjects[0];
+            Outline firstOutline = previouslyHighlightedObject.GetComponentInChildren<Outline>();
+            if (firstOutline != null)
+                firstOutline.enabled = true;
+        }
+
         while (true)
         {
             int tempValue = ChooseOption.Choose(itemSelected, shop.Count, player.gamepad);
             if (itemSelected != tempValue)
             {
                 itemSelected = tempValue;
+
+               
+                foreach (var itemObj in shopItem3DObjects)
+                {
+                    if (itemObj != null)
+                    {
+                        Outline outline = itemObj.GetComponentInChildren<Outline>();
+                        if (outline != null)
+                            outline.enabled = false;
+                    }
+                }
+
+               
+                if (shopItem3DObjects != null && itemSelected < shopItem3DObjects.Count)
+                {
+                    previouslyHighlightedObject = shopItem3DObjects[itemSelected];
+                    Outline newOutline = previouslyHighlightedObject.GetComponentInChildren<Outline>();
+                    if (newOutline != null)
+                        newOutline.enabled = true;
+                }
+
                 Debug.Log(shop[itemSelected].name + " " + shop[itemSelected].price + "$");
             }
 
@@ -65,17 +102,14 @@ public class ItemShop : MonoBehaviour, SpaceActions
 
                     Debug.Log("You bought: " + shop[itemSelected].name + " Thank you come again");
 
-                   
                     if (ThankYouComeAgainClip != null)
                         audioSource.PlayOneShot(ThankYouComeAgainClip);
 
-                    
                     if (shopItem3DObjects != null && itemSelected < shopItem3DObjects.Count)
                     {
                         shopItem3DObjects[itemSelected].SetActive(false);
                     }
 
-                   
                     if (shop[itemSelected].name == "Duff Beer" && BuyBeerClip != null)
                         audioSource.PlayOneShot(BuyBeerClip);
                     else if (shop[itemSelected].name == "D10" && BuyD10Clip != null)
@@ -96,6 +130,17 @@ public class ItemShop : MonoBehaviour, SpaceActions
             }
 
             yield return null;
+        }
+
+        // Disable outline when shop closes
+        foreach (var itemObj in shopItem3DObjects)
+        {
+            if (itemObj != null)
+            {
+                Outline outline = itemObj.GetComponentInChildren<Outline>();
+                if (outline != null)
+                    outline.enabled = false;
+            }
         }
 
         if (ShopWindowCamera != null)
