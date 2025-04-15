@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
             return (gamepad.buttonSouth.isPressed);
 
         }
-        else return (Input.GetKeyUp(KeyCode.KeypadEnter) || Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Space));
+        else return (Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Space));
     }
 
     public static bool  InputCancel(Gamepad gamepad) {
@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
             return (gamepad.buttonEast.isPressed);
 
         }
-        else return (Input.GetKeyUp(KeyCode.Backspace) || Input.GetKeyUp(KeyCode.Escape));
+        else return (Input.GetKeyUp(KeyCode.Backspace) || Input.GetKeyUp(KeyCode.Escape) || Input.GetKey(KeyCode.W));
     }
 
 
@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
             return (gamepad.leftStick.left.isPressed || gamepad.dpad.left.isPressed);
 
         }
-        else return (Input.GetKeyUp(KeyCode.LeftArrow)||(Input.GetKeyUp(KeyCode.A)));
+        else return (Input.GetKey(KeyCode.LeftArrow)||(Input.GetKey(KeyCode.A)));
     }
 
     public static bool InputRight( Gamepad gamepad) {
@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
             return (gamepad.leftStick.right.isPressed|| gamepad.dpad.right.isPressed);
 
         }
-        else return (Input.GetKeyUp(KeyCode.RightArrow) || (Input.GetKeyUp(KeyCode.D)));
+        else return (Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.D)));
     }
 
 

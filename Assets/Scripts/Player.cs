@@ -13,7 +13,6 @@ public class Player : MonoBehaviour, IComparable<Player>
 
     public List<Item> items = new List<Item>();
     public SpaceClass currentSpace;
-    private int spaceToMove = 0;
     public int extraSpacesToMove;
     public  bool block = true;
     public bool playerAction = false;

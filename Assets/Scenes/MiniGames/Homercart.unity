@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c7ba49cdeb545a1b6c210c08874304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorForce: 1000
+  motorForce: 900
   breakForce: 3000
   maxSteerAngle: 30
   frontLeftWheelCollider: {fileID: 2127158782}
@@ -247,7 +247,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34237488}
   serializedVersion: 4
-  m_Mass: 1300
+  m_Mass: 1500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -843,6 +843,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed67b83233f364738a911075d8aff28f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1860458105}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed67b83233f364738a911075d8aff28f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1860458106}
     - targetCorrespondingSourceObject: {fileID: 5589229758160391543, guid: ed67b83233f364738a911075d8aff28f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1526097323}
@@ -1725,7 +1728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c7ba49cdeb545a1b6c210c08874304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorForce: 1000
+  motorForce: 900
   breakForce: 3000
   maxSteerAngle: 30
   frontLeftWheelCollider: {fileID: 626995118}
@@ -1765,7 +1768,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568601402}
   serializedVersion: 4
-  m_Mass: 1300
+  m_Mass: 1500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1963,7 +1966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c7ba49cdeb545a1b6c210c08874304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorForce: 1000
+  motorForce: 900
   breakForce: 3000
   maxSteerAngle: 30
   frontLeftWheelCollider: {fileID: 1510307247}
@@ -2003,7 +2006,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669870203}
   serializedVersion: 4
-  m_Mass: 1300
+  m_Mass: 1500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3264,7 +3267,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173726818}
   serializedVersion: 4
-  m_Mass: 1300
+  m_Mass: 1500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3316,7 +3319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c7ba49cdeb545a1b6c210c08874304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorForce: 1000
+  motorForce: 900
   breakForce: 3000
   maxSteerAngle: 30
   frontLeftWheelCollider: {fileID: 1002859585}
@@ -4415,6 +4418,23 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1860458106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860458102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec72be0d0dc854e279e3d1b5dd71b1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cars:
+  - {fileID: 1173726821}
+  - {fileID: 669870204}
+  - {fileID: 34237489}
+  - {fileID: 568601403}
 --- !u!1 &1867869634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7413525071469681581, guid: ed67b83233f364738a911075d8aff28f, type: 3}

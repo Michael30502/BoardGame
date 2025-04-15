@@ -2,6 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
+
+
+
+
 
 public class car_controller : MonoBehaviour
 {
@@ -9,6 +15,10 @@ public class car_controller : MonoBehaviour
     private float currentSteerAngle, currentbreakForce;
     private bool isBreaking;
     private bool isDriving;
+    public Gamepad gamepad;
+
+
+
 
     // Settings
     [SerializeField] private float motorForce, breakForce, maxSteerAngle;
@@ -27,16 +37,33 @@ public class car_controller : MonoBehaviour
         HandleSteering();
         UpdateWheels();
     }
+ 
 
-    private void GetInput() {
+
+     private void GetInput() {
         // Steering Input
-        horizontalInput = Input.GetAxis("Horizontal");
+        float horizontal = 0f;
+        float vertical = 0f;
+        
+
+
+
+        if (InputManager.InputRight(gamepad))
+            horizontal += 1f;
+        if (InputManager.InputLeft(gamepad))
+            horizontal -= 1f;
+        horizontalInput = horizontal;
+        if(InputManager.InputSelect(gamepad))
+            vertical = 1f;
+        else
+            vertical = 0f;
 
         // Acceleration Input
-        verticalInput = Input.GetAxis("Vertical");
+        verticalInput = vertical;
+
 
         // Breaking Input
-        isBreaking = Input.GetKey(KeyCode.Space);
+        isBreaking = InputManager.InputCancel(gamepad);
     }
 
     private void HandleMotor() {
