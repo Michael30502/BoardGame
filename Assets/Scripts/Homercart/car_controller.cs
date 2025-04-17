@@ -61,8 +61,25 @@ public class car_controller : MonoBehaviour
         horizontalInput = horizontal;
 if (InputManager.InputSelect(gamepad) && match.isMatch)
             vertical = 1f;
+     if (match.isMatch)
+{
+        if (InputManager.InputSelect(gamepad))
+        {
+            vertical = 1f;  
+        }
+        else if (InputManager.InputRevers(gamepad))
+        {
+            vertical = -0.4f;  
+        }
         else
-            vertical = 0f;
+        {
+            vertical = 0f;  
+        }
+    }
+    else
+    {
+        vertical = 0f;  
+    }
 
         // Acceleration Input
         verticalInput = vertical;
