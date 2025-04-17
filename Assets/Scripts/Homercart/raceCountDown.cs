@@ -6,6 +6,9 @@ public class raceCountDown : MonoBehaviour
 {
     public Sprite[] countdownSprites; // Assign your countdown images (e.g., 3, 2, 1, GO) in the Inspector
     private Image img;
+    public bool isMatch = false;
+
+
 
     void Start()
     {
@@ -27,6 +30,7 @@ public class raceCountDown : MonoBehaviour
         }
 
         img.enabled = false; // Hide image after countdown
+        isMatch = true; // Set the match to true
     }
 
     IEnumerator FadeOut()

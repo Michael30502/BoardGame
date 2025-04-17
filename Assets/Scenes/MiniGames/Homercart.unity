@@ -207,9 +207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c7ba49cdeb545a1b6c210c08874304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  match: {fileID: 710031677}
   motorForce: 900
   breakForce: 3000
-  maxSteerAngle: 30
+  maxSteerAngle: 40
   frontLeftWheelCollider: {fileID: 2127158782}
   frontRightWheelCollider: {fileID: 2071991964}
   rearLeftWheelCollider: {fileID: 918686595}
@@ -843,9 +844,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed67b83233f364738a911075d8aff28f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1860458105}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed67b83233f364738a911075d8aff28f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1860458106}
     - targetCorrespondingSourceObject: {fileID: 5589229758160391543, guid: ed67b83233f364738a911075d8aff28f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1526097323}
@@ -1728,9 +1726,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c7ba49cdeb545a1b6c210c08874304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  match: {fileID: 710031677}
   motorForce: 900
   breakForce: 3000
-  maxSteerAngle: 30
+  maxSteerAngle: 40
   frontLeftWheelCollider: {fileID: 626995118}
   frontRightWheelCollider: {fileID: 1334261202}
   rearLeftWheelCollider: {fileID: 42470221}
@@ -1966,9 +1965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c7ba49cdeb545a1b6c210c08874304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  match: {fileID: 710031677}
   motorForce: 900
   breakForce: 3000
-  maxSteerAngle: 30
+  maxSteerAngle: 40
   frontLeftWheelCollider: {fileID: 1510307247}
   frontRightWheelCollider: {fileID: 102690996}
   rearLeftWheelCollider: {fileID: 1976378909}
@@ -2246,6 +2246,7 @@ GameObject:
   - component: {fileID: 710031679}
   - component: {fileID: 710031678}
   - component: {fileID: 710031677}
+  - component: {fileID: 710031680}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2289,6 +2290,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4652fa3c0ec9649d489cb697afa91b7d, type: 3}
   - {fileID: 21300000, guid: 115eb9c2e57cb4adfaf3a2001072aedc, type: 3}
   - {fileID: 21300000, guid: e0608c3460f81470e9095cc7c1297528, type: 3}
+  isMatch: 0
 --- !u!114 &710031678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2327,6 +2329,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710031675}
   m_CullTransparentMesh: 1
+--- !u!114 &710031680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710031675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8328156bcb7f7344ca6e2cf1d4a1bd8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &759206993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3417,6 +3431,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 05096ea043e734cc69bc4922f84c2473, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1173726821}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 05096ea043e734cc69bc4922f84c2473, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1173726822}
     - targetCorrespondingSourceObject: {fileID: -5341548325046856723, guid: 05096ea043e734cc69bc4922f84c2473, type: 3}
       insertIndex: -1
       addedObject: {fileID: 122587609}
@@ -3491,9 +3508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c7ba49cdeb545a1b6c210c08874304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  match: {fileID: 710031677}
   motorForce: 900
   breakForce: 3000
-  maxSteerAngle: 30
+  maxSteerAngle: 40
   frontLeftWheelCollider: {fileID: 1002859585}
   frontRightWheelCollider: {fileID: 673900011}
   rearLeftWheelCollider: {fileID: 1255968477}
@@ -3502,11 +3520,75 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 182771685}
   rearLeftWheelTransform: {fileID: 1976821718}
   rearRightWheelTransform: {fileID: 2034799231}
+--- !u!114 &1173726822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173726818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1e263118c34457f87923e03c739237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flippedThreshold: 0.5
+  carLayer:
+    m_Bits: 0
 --- !u!4 &1176837398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed67b83233f364738a911075d8aff28f, type: 3}
   m_PrefabInstance: {fileID: 99183721}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1205227276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205227278}
+  - component: {fileID: 1205227277}
+  m_Layer: 0
+  m_Name: matchControllerUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1205227277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205227276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec72be0d0dc854e279e3d1b5dd71b1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cars:
+  - {fileID: 1173726821}
+  - {fileID: 669870204}
+  - {fileID: 34237489}
+  - {fileID: 568601403}
+--- !u!4 &1205227278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205227276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 139.85178, y: 0.854415, z: -248.45618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1214299623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6044916042323733679, guid: 05096ea043e734cc69bc4922f84c2473, type: 3}
@@ -4590,23 +4672,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1860458106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860458102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec72be0d0dc854e279e3d1b5dd71b1f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cars:
-  - {fileID: 1173726821}
-  - {fileID: 669870204}
-  - {fileID: 34237489}
-  - {fileID: 568601403}
 --- !u!1 &1867869634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7413525071469681581, guid: ed67b83233f364738a911075d8aff28f, type: 3}
@@ -5375,3 +5440,4 @@ SceneRoots:
   - {fileID: 263043125}
   - {fileID: 675620588}
   - {fileID: 2094549286}
+  - {fileID: 1205227278}

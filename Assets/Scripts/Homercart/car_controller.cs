@@ -11,11 +11,17 @@ using UnityEngine.InputSystem;
 
 public class car_controller : MonoBehaviour
 {
+
     private float horizontalInput, verticalInput;
     private float currentSteerAngle, currentbreakForce;
     private bool isBreaking;
     private bool isDriving;
+    [SerializeField] private raceCountDown match;
     public Gamepad gamepad;
+    private float carindex;
+
+
+
 
 
 
@@ -53,7 +59,7 @@ public class car_controller : MonoBehaviour
         if (InputManager.InputLeft(gamepad))
             horizontal -= 1f;
         horizontalInput = horizontal;
-        if(InputManager.InputSelect(gamepad))
+if (InputManager.InputSelect(gamepad) && match.isMatch)
             vertical = 1f;
         else
             vertical = 0f;
