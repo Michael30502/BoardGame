@@ -59,8 +59,6 @@ public class car_controller : MonoBehaviour
         if (InputManager.InputLeft(gamepad))
             horizontal -= 1f;
         horizontalInput = horizontal;
-if (InputManager.InputSelect(gamepad) && match.isMatch)
-            vertical = 1f;
      if (match.isMatch)
 {
         if (InputManager.InputSelect(gamepad))
