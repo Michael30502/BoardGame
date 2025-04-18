@@ -10,7 +10,7 @@ public class BaseUiManager : MonoBehaviour
     public Text pointText;
     public int position;
     public Text positionText;
-    public Transform camera;
+    public Transform playerCamera;
 
 
 
@@ -24,9 +24,9 @@ public class BaseUiManager : MonoBehaviour
 
     void Update()
     {
-        transform.rotation = camera.rotation;
+        transform.rotation = playerCamera.rotation;
         
-        transform.position = camera.position + new Vector3(2.9f, -3.7f, -0.1f);
+        transform.position = playerCamera.position + new Vector3(2.9f, -3.7f, -0.1f);
 
     }
   

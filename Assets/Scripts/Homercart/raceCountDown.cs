@@ -7,6 +7,7 @@ public class raceCountDown : MonoBehaviour
     public Sprite[] countdownSprites; // Assign your countdown images (e.g., 3, 2, 1, GO) in the Inspector
     private Image img;
     public bool isMatch = false;
+    public Image[] pictureImages; // Assign your countdown images (e.g., 3, 2, 1, GO) in the Inspector
 
 
 
@@ -21,6 +22,7 @@ public class raceCountDown : MonoBehaviour
         for (int i = 0; i < countdownSprites.Length; i++)
         {
             img.sprite = countdownSprites[i]; // Change the image
+
             img.color = new Color(1f, 1f, 1f, 1f); // Make sure it's fully visible
 
             // Optional fade (just like before)
@@ -31,6 +33,12 @@ public class raceCountDown : MonoBehaviour
 
         img.enabled = false; // Hide image after countdown
         isMatch = true; // Set the match to true
+
+        for(int i = 0; i < pictureImages.Length; i++)
+        {
+           pictureImages[i].enabled = false; // Change the image
+
+        }
     }
 
     IEnumerator FadeOut()
