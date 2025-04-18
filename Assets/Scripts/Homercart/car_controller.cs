@@ -67,7 +67,7 @@ public class car_controller : MonoBehaviour
         }
         else if (InputManager.InputRevers(gamepad))
         {
-            vertical = -0.4f;  
+            vertical = -0.6f;  
         }
         else
         {
@@ -85,6 +85,21 @@ public class car_controller : MonoBehaviour
 
         // Breaking Input
         isBreaking = InputManager.InputCancel(gamepad);
+        if(InputManager.flipOVer(gamepad))
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+
+            // Freeze motion before flipping
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            // Flip upright safely using Quaternion
+            Quaternion uprightRotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);
+            rb.MoveRotation(uprightRotation);
+
+            // Slightly lift the car to avoid collision with ground
+            rb.MovePosition(rb.position + Vector3.up * 1f);
+        }
     }
 
     private void HandleMotor() {

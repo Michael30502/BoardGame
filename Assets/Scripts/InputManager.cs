@@ -49,6 +49,14 @@ public class InputManager : MonoBehaviour
         }
         else return (Input.GetKey(KeyCode.C));
     }
+        public static bool flipOVer( Gamepad gamepad) {
+        if (gamepad != null)
+        {
+            return (gamepad.buttonNorth.isPressed);
+
+        }
+        else return (Input.GetKey(KeyCode.B));
+    }
 
 
 }
