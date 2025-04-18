@@ -8,6 +8,8 @@ public class raceCountDown : MonoBehaviour
     private Image img;
     public bool isMatch = false;
     public Image[] pictureImages; // Assign your countdown images (e.g., 3, 2, 1, GO) in the Inspector
+        public AudioSource audioSource;
+
 
 
 
@@ -15,6 +17,8 @@ public class raceCountDown : MonoBehaviour
     {
         img = GetComponent<Image>();
           StartCoroutine(PlayCountdown());
+                  audioSource.Play();
+
     }
 
     IEnumerator PlayCountdown()
@@ -33,6 +37,9 @@ public class raceCountDown : MonoBehaviour
 
         img.enabled = false; // Hide image after countdown
         isMatch = true; // Set the match to true
+        audioSource.Stop();
+
+
 
         for(int i = 0; i < pictureImages.Length; i++)
         {

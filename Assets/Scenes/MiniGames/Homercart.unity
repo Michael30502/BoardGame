@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   match: {fileID: 478643919}
-  motorForce: 900
+  motorForce: 1500
   breakForce: 3000
   maxSteerAngle: 40
   frontLeftWheelCollider: {fileID: 2127158782}
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba1fc80a09ae4149828c5f8e5d616c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 364fdc34451a4f9489a26d593bdf36bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba1fc80a09ae4149828c5f8e5d616c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2512cb20b9c62f147977e5477ab08c78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2078,6 +2078,7 @@ GameObject:
   - component: {fileID: 478643921}
   - component: {fileID: 478643920}
   - component: {fileID: 478643919}
+  - component: {fileID: 478643922}
   m_Layer: 5
   m_Name: countDownImage
   m_TagString: Untagged
@@ -2127,6 +2128,7 @@ MonoBehaviour:
   - {fileID: 1727371952}
   - {fileID: 411122656}
   - {fileID: 530522282}
+  audioSource: {fileID: 478643922}
 --- !u!114 &478643920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2165,6 +2167,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478643917}
   m_CullTransparentMesh: 1
+--- !u!82 &478643922
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478643917}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2b044a7413f61406d80ecfbd22c20e59, type: 3}
+  m_Resource: {fileID: 8300000, guid: 2b044a7413f61406d80ecfbd22c20e59, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &482366975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 664255642363253171, guid: ed67b83233f364738a911075d8aff28f, type: 3}
@@ -2383,7 +2482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba1fc80a09ae4149828c5f8e5d616c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e834275b06751b44b3d7f08bf151a9c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2473,7 +2572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   match: {fileID: 478643919}
-  motorForce: 900
+  motorForce: 1500
   breakForce: 3000
   maxSteerAngle: 40
   frontLeftWheelCollider: {fileID: 626995118}
@@ -2809,7 +2908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   match: {fileID: 478643919}
-  motorForce: 1300
+  motorForce: 1500
   breakForce: 3000
   maxSteerAngle: 40
   frontLeftWheelCollider: {fileID: 1510307247}
@@ -4386,7 +4485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   match: {fileID: 478643919}
-  motorForce: 900
+  motorForce: 1500
   breakForce: 3000
   maxSteerAngle: 40
   frontLeftWheelCollider: {fileID: 1002859585}
@@ -5704,7 +5803,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba1fc80a09ae4149828c5f8e5d616c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6445414eef1847145b63a2f9419b09fe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
