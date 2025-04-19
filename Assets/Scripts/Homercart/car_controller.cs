@@ -15,11 +15,15 @@ public class car_controller : MonoBehaviour
     private float horizontalInput, verticalInput;
     private float currentSteerAngle, currentbreakForce;
     private bool isBreaking;
-    private bool isDriving;
     [SerializeField] private raceCountDown match;
     public Gamepad gamepad;
     private float carindex;
-    
+    public Transform directionCheckpoint;
+    private bool checkpointReached = false;
+
+
+
+
 
 
 
@@ -52,56 +56,59 @@ public class car_controller : MonoBehaviour
         float horizontal = 0f;
         float vertical = 0f;
         
-
-
-
         if (InputManager.InputRight(gamepad))
             horizontal += 1f;
         if (InputManager.InputLeft(gamepad))
             horizontal -= 1f;
         horizontalInput = horizontal;
-     if (match.isMatch)
-{
-        if (InputManager.InputSelect(gamepad))
+
+
+        if (InputManager.InputSelect(gamepad) && match.isMatch)
         {
-            vertical = 1f;  
+      
+            match.isMatch = true;
         }
-        else if (InputManager.InputRevers(gamepad))
+        
+      
+
+        if (!checkpointReached)
+    {
+        float distance = Vector3.Distance(transform.position, directionCheckpoint.position);
+        if (distance < 3f) // you can tweak this value
         {
-            vertical = -0.6f;  
+            checkpointReached = true;
         }
-        else
-        {
-            vertical = 0f;  
-        }
+    }
+        if (InputManager.InputRevers(gamepad) && match.isMatch)
+    {
+        vertical = -0.6f;
+    }
+    else if ((checkpointReached || correctCarDirection()) && InputManager.InputSelect(gamepad) && match.isMatch)
+    {
+        vertical = 1f;
     }
     else
     {
-        vertical = 0f;  
-    }
+        vertical = 0.005f;
+}
 
-        // Acceleration Input
+            
+ 
+
         verticalInput = vertical;
 
 
-        // Breaking Input
         isBreaking = InputManager.InputCancel(gamepad);
-        if(InputManager.flipOVer(gamepad))
+        if(InputManager.flipOVer(gamepad) && isGrounded() && match.isMatch)
+        
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
-
-            // Freeze motion before flipping
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-
-            // Flip upright safely using Quaternion
-            Quaternion uprightRotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);
-            rb.MoveRotation(uprightRotation);
-
-            // Slightly lift the car to avoid collision with ground
-            rb.MovePosition(rb.position + Vector3.up * 1f);
+            flipCar();
         }
-    }
+         }  
+        
+      
+        
+    
 
     private void HandleMotor() {
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
@@ -137,4 +144,34 @@ public class car_controller : MonoBehaviour
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
+    private bool isGrounded() {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 1.5f)) {
+            return true;
+        }
+        return false;
+    }
+    private void flipCar() {
+            Rigidbody rb = GetComponent<Rigidbody>();
+
+            // Freeze motion before flipping
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            // Flip upright safely using Quaternion
+            Quaternion uprightRotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);
+            rb.MoveRotation(uprightRotation);
+
+            // Slightly lift the car to avoid collision with ground
+            rb.MovePosition(rb.position + Vector3.up * 1f);
+    }
+    private bool correctCarDirection()
+    {
+        Vector3 forward = transform.forward;
+        Vector3 toCheckpoint = (directionCheckpoint.position - transform.position).normalized;
+        float angle = Vector3.Angle(forward, toCheckpoint);
+        return angle < 60f;
+    }
+
+
 }
