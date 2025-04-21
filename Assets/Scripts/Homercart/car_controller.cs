@@ -18,8 +18,6 @@ public class car_controller : MonoBehaviour
     [SerializeField] private raceCountDown match;
     public Gamepad gamepad;
     private float carindex;
-    public Transform directionCheckpoint;
-    private bool checkpointReached = false;
 
 
 
@@ -65,32 +63,26 @@ public class car_controller : MonoBehaviour
 
         if (InputManager.InputSelect(gamepad) && match.isMatch)
         {
-      
             match.isMatch = true;
         }
         
-      
 
-        if (!checkpointReached)
-    {
-        float distance = Vector3.Distance(transform.position, directionCheckpoint.position);
-        if (distance < 3f) // you can tweak this value
+
+        if ( InputManager.InputRevers(gamepad) && match.isMatch)
         {
-            checkpointReached = true;
+            vertical = -0.6f; 
         }
-    }
-        if (InputManager.InputRevers(gamepad) && match.isMatch)
-    {
-        vertical = -0.6f;
-    }
-    else if ((checkpointReached || correctCarDirection()) && InputManager.InputSelect(gamepad) && match.isMatch)
-    {
-        vertical = 1f;
-    }
-    else
-    {
-        vertical = 0.005f;
-}
+        else if ( InputManager.InputSelect(gamepad) && match.isMatch)
+        {
+            vertical = 1f; // forward
+        }
+        else if ((InputManager.InputRevers(gamepad) ||InputManager.InputSelect(gamepad)) && match.isMatch)
+            vertical = 0.03f;
+        else
+        {
+            vertical = 0; // race is over
+        }
+
 
             
  
@@ -99,7 +91,7 @@ public class car_controller : MonoBehaviour
 
 
         isBreaking = InputManager.InputCancel(gamepad);
-        if(InputManager.flipOVer(gamepad) && isGrounded() && match.isMatch)
+        if(InputManager.flipOVer(gamepad) && match.isMatch)
         
         {
             flipCar();
@@ -151,27 +143,11 @@ public class car_controller : MonoBehaviour
         }
         return false;
     }
-    private void flipCar() {
-            Rigidbody rb = GetComponent<Rigidbody>();
-
-            // Freeze motion before flipping
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-
-            // Flip upright safely using Quaternion
-            Quaternion uprightRotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);
-            rb.MoveRotation(uprightRotation);
-
-            // Slightly lift the car to avoid collision with ground
-            rb.MovePosition(rb.position + Vector3.up * 1f);
-    }
-    private bool correctCarDirection()
-    {
-        Vector3 forward = transform.forward;
-        Vector3 toCheckpoint = (directionCheckpoint.position - transform.position).normalized;
-        float angle = Vector3.Angle(forward, toCheckpoint);
-        return angle < 60f;
-    }
-
+private void flipCar()
+{
+Vector3 fwd = transform.forward;
+transform.rotation = Quaternion.identity;
+transform.forward = fwd;
+}
 
 }
