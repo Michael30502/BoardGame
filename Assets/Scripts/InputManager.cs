@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour
         }
         else return (Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.D)));
     }
-     public static bool InputReverse( Gamepad gamepad) {
+     public static bool InputRevers( Gamepad gamepad) {
         if (gamepad != null)
         {
             return (gamepad.buttonWest.isPressed);
@@ -49,7 +49,7 @@ public class InputManager : MonoBehaviour
         }
         else return (Input.GetKey(KeyCode.C));
     }
-        public static bool flipOver( Gamepad gamepad) {
+        public static bool flipOVer( Gamepad gamepad) {
         if (gamepad != null)
         {
             return (gamepad.buttonNorth.isPressed);

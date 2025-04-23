@@ -11,18 +11,14 @@ public class ChooseOption : MonoBehaviour
             if (InputManager.InputLeft(gamepad))
             {
                 currentOption--;
-            Input.ResetInputAxes();
-
-
-        }
-        if (InputManager.InputRight(gamepad))
+                
+            }
+            if (InputManager.InputRight(gamepad))
             {
             currentOption++;
-            Input.ResetInputAxes();
+            }
 
-        }
-
-        if (currentOption > n-1)
+            if (currentOption > n-1)
             {
             currentOption = 0;
             }
@@ -40,8 +36,6 @@ public class ChooseOption : MonoBehaviour
 
         if (InputManager.InputSelect(gamepad))
         {
-            Input.ResetInputAxes();
-
             return true;
         }
         return false;
@@ -52,8 +46,6 @@ public class ChooseOption : MonoBehaviour
     {
         if (InputManager.InputCancel(gamepad))
         {
-            Input.ResetInputAxes();
-
             return true;
         }
         return false;
