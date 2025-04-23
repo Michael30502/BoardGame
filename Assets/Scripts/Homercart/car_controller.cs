@@ -65,7 +65,7 @@ void Start()
         
 
 
-        if ( InputManager.InputRevers(gamepad) && match.isMatch)
+        if ( InputManager.InputReverse(gamepad) && match.isMatch)
         {
             vertical = -0.6f; 
         }
@@ -73,7 +73,7 @@ void Start()
         {
             vertical = 1f; // forward
         }
-        else if ((InputManager.InputRevers(gamepad) ||InputManager.InputSelect(gamepad)) && match.isMatch)
+        else if ((InputManager.InputReverse(gamepad) ||InputManager.InputSelect(gamepad)) && match.isMatch)
             vertical = 0.03f;
         else
         {
@@ -88,7 +88,7 @@ void Start()
 
 
         isBreaking = InputManager.InputCancel(gamepad);
-        if(InputManager.flipOVer(gamepad) && match.isMatch)
+        if(InputManager.flipOver(gamepad) && match.isMatch)
         
         {
             flipCar();

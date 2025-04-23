@@ -22,8 +22,16 @@ public class Manager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        minigameManager = GameObject.Find("MinigameController").GetComponent<MinigameManager>();
-        minigameManager.mainSceneParent.SetActive(false);
+
+        try
+        {
+            minigameManager = GameObject.Find("MinigameController").GetComponent<MinigameManager>();
+            if (minigameManager != null)
+            {
+                minigameManager.mainSceneParent.SetActive(false);
+            }
+        }
+        catch(System.Exception e) { print("main scene not found"); }
 
         for (int i = 0; i < doors.Count; i++) {
 
@@ -43,6 +51,7 @@ public class Manager : MonoBehaviour
         }
 
         players[0].takeAction();
+
     }
 
     // Update is called once per frame

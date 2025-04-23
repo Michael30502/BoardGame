@@ -6,12 +6,13 @@ public class Key : MonoBehaviour
 
     public bool selected = false;
     public bool active = false;
+    [SerializeField] Material originalMaterial;
+    [SerializeField] Material blueMaterial;
 
     TMP_Text text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        text = gameObject.GetComponentInChildren<TMP_Text>();
 
 
     }
@@ -21,11 +22,13 @@ public class Key : MonoBehaviour
     {
         if (selected)
         {
-            text.color = Color.blue;
+            if (gameObject.GetComponentInChildren<Renderer>().material != blueMaterial)
+            gameObject.GetComponentInChildren<Renderer>().material = blueMaterial;
         }
-        else
+        else if (gameObject.GetComponentInChildren<Renderer>().material!= originalMaterial)
         {
-            text.color = Color.white;
+            gameObject.GetComponentInChildren<Renderer>().material = originalMaterial;
+
         }
     }
 }

@@ -11,7 +11,7 @@ public class TurnController : MonoBehaviour
     [SerializeField] public GameObject gameModeSelectionMenuUI;
 
 
-public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
+    public HUDManager hudManager;
 
 
 
@@ -20,6 +20,8 @@ public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
 
     public int turn =0;
     public int currentPlayer = 1;
+    public int maxRounds = 1;
+    public bool gameOver = false;
 
     void Start()
     {
@@ -110,9 +112,18 @@ public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
 
 
     public void changeTurn() {
-        currentPlayer = 1;
-        changePlayerTurn();
-    
+        if (turn > maxRounds)
+        {
+            gameOver = true;
+            //Mathias - Insert Gameover Podium here!!!
+
+        }
+        else
+        {
+            currentPlayer = 1;
+            hudManager.ChangeRound(turn, maxRounds);
+            changePlayerTurn();
+        }
     }
 
     public bool isMyTurn(Player player) {
