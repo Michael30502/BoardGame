@@ -1,5 +1,6 @@
 using System.Collections;
-
+using UnityEditor.Animations;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMinigame3 : MonoBehaviour
@@ -56,19 +57,16 @@ public class PlayerMinigame3 : MonoBehaviour
         bool block = true;
         while (block)
         {
-
             if (InputManager.InputLeft(gamePad))
             {
-                print("left");
+
                 selection--;
 
 
             }
 
-            if (InputManager.InputRight(gamePad))
+            if (InputManager.InputLeft(gamePad))
             {
-                print("right");
-
                 selection++;
 
 
@@ -102,8 +100,6 @@ public class PlayerMinigame3 : MonoBehaviour
 
                 block = false;
            }
-            Input.ResetInputAxes();
-
             yield return null;
 
         }
@@ -160,13 +156,11 @@ public class PlayerMinigame3 : MonoBehaviour
             {
                 manager.checkKeyPair(manager.doors[selection], manager.keys[keySelection]);
                 manager.doors[selection].selected = false;
-                manager.keys[keySelection].selected = false; 
+                manager.keys[keySelection].selected = false;
                 block = false;
                 yield return new WaitForSeconds(1.0f);
 
             }
-            Input.ResetInputAxes();
-
             yield return null;
 
         }

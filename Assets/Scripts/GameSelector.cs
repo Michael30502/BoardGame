@@ -10,11 +10,7 @@ using UnityEditor;
 public class GameSelector : MonoBehaviour
 {
     [SerializeField] private Button[] gameButtons;
-
-#if UNITY_EDITOR
     [SerializeField] private SceneAsset[] sceneAssets; // FolderArray af minigames
-
-#endif
     public string[] sceneNames; // Converted scene name
 
     [SerializeField] private float spinDuration = 2f; // Time of spinbutton
@@ -29,10 +25,18 @@ public class GameSelector : MonoBehaviour
     private void Awake()
     {
         //debuger Så lortet ikke bugger.
-        if (sceneNames.Length != gameButtons.Length)
+        if (sceneAssets.Length != gameButtons.Length)
         {
             Debug.LogError("Scene assets array must match the length of game buttons!");
             return;
+        }
+
+        // Convert SceneAsset[] to sceneNames[] for unity Scenebuilder and editor!
+        sceneNames = new string[sceneAssets.Length];
+        for (int i = 0; i < sceneAssets.Length; i++)
+        {
+            sceneNames[i] = GetSceneName(sceneAssets[i]);
+            Debug.Log($"Scene {i}: {sceneNames[i]}"); 
         }
 
         // Yoink text from textmeshpro buttons instead of generating aligning text fields to each button ligting up.
@@ -43,7 +47,12 @@ public class GameSelector : MonoBehaviour
         }
     }
 
-
+#if UNITY_EDITOR
+    private string GetSceneName(SceneAsset sceneAsset)
+    {
+        return sceneAsset != null ? sceneAsset.name : "Unnamed Scene";
+    }
+#endif
 
 
 
@@ -56,7 +65,7 @@ public class GameSelector : MonoBehaviour
     {
         int spinCount = Random.Range(minSpin, maxSpin);
         if (riggedDiceRoll != -1) {
-            spinCount = riggedDiceRoll-1;
+            spinCount = riggedDiceRoll;
         }
         chosenIndex = spinCount % gameButtons.Length;
 

@@ -13,9 +13,7 @@ public class HUDManager : MonoBehaviour
         public TextMeshProUGUI rankText;
         public TextMeshProUGUI moneyText;
         public TextMeshProUGUI pointText;
-
     }
-    public TextMeshProUGUI roundText;
 
     [SerializeField] public List<PlayerHUD> playerHUDs;
 
@@ -25,7 +23,6 @@ public class HUDManager : MonoBehaviour
     {
         CacheCurrentStats();
         UpdateRankings();
-        roundText.text = "0 / 3";
     }
 
     private void Update()
@@ -35,11 +32,6 @@ public class HUDManager : MonoBehaviour
             UpdateRankings();
             CacheCurrentStats();
         }
-    }
-
-    public void ChangeRound(int round, int maxRound)
-    {
-        roundText.text = round + "/" + maxRound;
     }
 
     private bool StatsChanged()
@@ -118,7 +110,4 @@ public class HUDManager : MonoBehaviour
             _ => rank + "th"
         };
     }
-
-
-
 }
