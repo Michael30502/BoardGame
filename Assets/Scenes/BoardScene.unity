@@ -24474,7 +24474,10 @@ MonoBehaviour:
   - {fileID: 102900000, guid: 5ff476b3a7d986546b9257782e0724c0, type: 3}
   - {fileID: 102900000, guid: 391ef2593922cff4c8367bc525746eb8, type: 3}
   - {fileID: 102900000, guid: bf3a7c24168e5a842ac090c149ef4635, type: 3}
-  sceneNames: []
+  sceneNames:
+  - Dropper
+  - Simpsoncart
+  - Gate-KeyPers
   spinDuration: 10
   minSpin: 12
   maxSpin: 60
@@ -32053,6 +32056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97242d6b8ba7454994d2827ec613379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnController: {fileID: 1480505592}
 --- !u!1 &1655487518
 GameObject:
   m_ObjectHideFlags: 0

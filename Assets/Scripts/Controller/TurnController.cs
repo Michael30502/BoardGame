@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TurnController : MonoBehaviour
 {
@@ -36,14 +35,19 @@ public class TurnController : MonoBehaviour
             gameModeSelectionMenuUI.SetActive(false);
         }
         setAllGamepads();
-        GameOptions gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
+        GameOptions gameOptions = null;
+        try{ 
+        gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
+        }
+        catch { print("gameoption not found");}
         if (gameOptions != null) {
             print(gameOptions.players.Count);
             for (int i = 0; i < gameOptions.players.Count; i++) {
                 Destroy(playerList[i].transform.GetChild(0).gameObject);
                 GameObject playerInstance = Instantiate(gameOptions.players[i]);
                 playerInstance.transform.SetParent(playerList[i].gameObject.transform, false);
-            }
+      
+                }
         }
     }
 

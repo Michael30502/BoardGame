@@ -1,6 +1,5 @@
 using System.Collections;
-using UnityEditor.Animations;
-using UnityEditor.Rendering;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMinigame3 : MonoBehaviour
