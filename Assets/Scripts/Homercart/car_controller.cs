@@ -18,16 +18,13 @@ public class car_controller : MonoBehaviour
     [SerializeField] private raceCountDown match;
     public Gamepad gamepad;
     private float carindex;
+Rigidbody rb;
 
-
-
-
-
-
-
-
-
-
+void Start()
+{
+    rb = GetComponent<Rigidbody>();
+    rb.centerOfMass = new Vector3(0, -0.9f, 0); // Helps prevent flipping
+}
 
     // Settings
     [SerializeField] private float motorForce, breakForce, maxSteerAngle;
@@ -136,13 +133,7 @@ public class car_controller : MonoBehaviour
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
-    private bool isGrounded() {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 1.5f)) {
-            return true;
-        }
-        return false;
-    }
+
 private void flipCar()
 {
 Vector3 fwd = transform.forward;
