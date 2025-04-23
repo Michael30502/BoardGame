@@ -24470,13 +24470,13 @@ MonoBehaviour:
   - {fileID: 1122330287}
   sceneAssets:
   - {fileID: 102900000, guid: ad5c118547753d749a9872808bed6330, type: 3}
-  - {fileID: 102900000, guid: 5d6942198f435474f92db3b10aab862b, type: 3}
+  - {fileID: 102900000, guid: 323ee0136747a4b14819e1b9f30fc497, type: 3}
   - {fileID: 102900000, guid: 5ff476b3a7d986546b9257782e0724c0, type: 3}
   - {fileID: 102900000, guid: 391ef2593922cff4c8367bc525746eb8, type: 3}
   - {fileID: 102900000, guid: bf3a7c24168e5a842ac090c149ef4635, type: 3}
   sceneNames:
   - Dropper
-  - Simpsoncart
+  - Homercart
   - Gate-KeyPers
   - Minigame 4
   - Minigame 5
@@ -24485,7 +24485,7 @@ MonoBehaviour:
   maxSpin: 60
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
-  riggedDiceRoll: 3
+  riggedDiceRoll: 2
   sceneParent: {fileID: 1054286712}
 --- !u!4 &1251439225
 Transform:
