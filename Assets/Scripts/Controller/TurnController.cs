@@ -17,15 +17,16 @@ public class TurnController : MonoBehaviour
     public Camera cameras;
 
 
-    public int turn =0;
+    public int turn =1;
     public int currentPlayer = 1;
     public int maxRounds = 1;
     public bool gameOver = false;
 
     void Start()
     {
+        hudManager.ChangeRound(turn, maxRounds);
 
-     
+
         playerList[0].id = 1;
         playerList[1].id = 2;
         playerList[2].id = 3;
@@ -80,6 +81,7 @@ public class TurnController : MonoBehaviour
                 cameras.player = playerList[0].transform;
 
                 playerList[0].block = false;
+                print("player 1s turn");
 
                 break;
             case 2:
@@ -126,7 +128,6 @@ public class TurnController : MonoBehaviour
         {
             currentPlayer = 1;
             hudManager.ChangeRound(turn, maxRounds);
-            changePlayerTurn();
         }
     }
 

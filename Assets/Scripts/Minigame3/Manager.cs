@@ -59,8 +59,9 @@ public class Manager : MonoBehaviour
     {
         
     }
-    public void checkKeyPair(Door door, Key key)
+    public bool checkKeyPair(Door door, Key key)
     {
+        bool result= false;
         if (door.key == key)
         {
             print("correct key");
@@ -71,12 +72,15 @@ public class Manager : MonoBehaviour
             players[currentPlayer].hasWon = true;
             playerOrder.Add(currentPlayer);
             playersLeft--;
-
+            result = true;
         }
         else
             print("incorrect key");
 
         changePlayerTurn();
+
+        return result;
+
 
     }
     public void changePlayerTurn()

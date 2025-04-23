@@ -24478,6 +24478,8 @@ MonoBehaviour:
   - Dropper
   - Simpsoncart
   - Gate-KeyPers
+  - Minigame 4
+  - Minigame 5
   spinDuration: 10
   minSpin: 12
   maxSpin: 60
@@ -28405,7 +28407,7 @@ MonoBehaviour:
   gameModeSelectionMenuUI: {fileID: 1251439223}
   hudManager: {fileID: 842745567}
   cameras: {fileID: 2025808497}
-  turn: 0
+  turn: 1
   currentPlayer: 1
   maxRounds: 3
   gameOver: 0
@@ -40019,6 +40021,7 @@ MonoBehaviour:
   - {fileID: 6220981597432449532}
   moneyTable: 05000000030000000100000000000000
   mainSceneParent: {fileID: 1054286712}
+  turnController: {fileID: 1480505592}
 --- !u!1 &2043427797
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class MinigameManager : MonoBehaviour
 
     private bool minigamePlayed;
     public GameObject mainSceneParent;
-
+    public TurnController turnController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,8 +29,11 @@ public class MinigameManager : MonoBehaviour
 
             playerList[playerOrder[i]].money += moneyTable[i];
         }
+        turnController.changePlayerTurn();
     
     }
+
+
 
 
 }

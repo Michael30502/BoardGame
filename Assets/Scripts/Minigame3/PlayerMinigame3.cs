@@ -158,10 +158,13 @@ public class PlayerMinigame3 : MonoBehaviour
             }
             if (InputManager.InputSelect(gamePad))
             {
-                manager.checkKeyPair(manager.doors[selection], manager.keys[keySelection]);
-                manager.doors[selection].selected = false;
-                manager.keys[keySelection].selected = false; 
+                if (!manager.checkKeyPair(manager.doors[selection], manager.keys[keySelection]))
+                {
+                    manager.doors[selection].selected = false;
+                    manager.keys[keySelection].selected = false;
+                }
                 block = false;
+
                 yield return new WaitForSeconds(1.0f);
 
             }
