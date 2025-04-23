@@ -6,49 +6,50 @@ using TMPro;
 public class finishLine : MonoBehaviour
 {
 
-public GameObject[] finishCanvas;
+    public GameObject[] finishCanvas;
+    private int counter;
 
-void Start()
-{
-    foreach (GameObject canvas in finishCanvas)
+    void Start()
     {
-        canvas.SetActive(false);
+        foreach (GameObject canvas in finishCanvas)
+        {
+            canvas.SetActive(false);
+        }
     }
-}
-
-private void OnTriggerEnter(Collider other)
-{
-            Debug.Log("Trigger entered by: " ); // ⬅ Check if this shows up
-
-    if (other.CompareTag("Player1"))
-    {  
-                Debug.Log("Player1 triggered finish!");
-
-            finishCanvas[0].SetActive(true);  
+    void Update()
+    {
+        if (counter >= 3)
+        {
+            Debug.Log("All players have finished!");
+            // You can add additional logic here, such as ending the game or displaying a final screen.
+        }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger stay with:  enter");
+        if (other.CompareTag("Player1"))
+        {
+            Debug.Log("Player1 triggered finish!");
+            counter++;
+
+            finishCanvas[0].SetActive(true);
+        }
         if (other.CompareTag("Player2"))
-        {  
-            finishCanvas[1].SetActive(true);  
+        {
+            finishCanvas[1].SetActive(true);
         }
         if (other.CompareTag("Player3"))
-        {  
-            finishCanvas[2].SetActive(true);  
+        {
+            finishCanvas[2].SetActive(true);
         }
         if (other.CompareTag("Player4"))
-        {  
-            finishCanvas[3].SetActive(true);  
+        {
+            finishCanvas[3].SetActive(true);
         }
-}
 
-
-    private void OnTriggerStay(Collider other)
-    {
-        Debug.Log("STAY: " + other.name);
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("EXIT: " + other.name);
-    }
+
 }
 
