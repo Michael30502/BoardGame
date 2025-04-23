@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class HudChanger : MonoBehaviour
 {
+    public TurnController turnController;
 
 
     private void Start()
     {
-        GameOptions gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
+        GameOptions gameOptions = null;
+        try
+        {
+            gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
+        }
+        catch { print("gameoption not found"); }
         if (gameOptions != null)
         {
             print(gameOptions.players.Count);
@@ -49,6 +55,12 @@ public class HudChanger : MonoBehaviour
                                     hUDManager.playerHUDs[i].pointText = hudInstance.transform.GetChild(i3).gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
                                     break;
+                                case "ItemPanel":
+
+                                    hudInstance.transform.GetChild(i3).gameObject.GetComponent<ItemImageDisplay>().player = turnController.playerList[i];
+;
+                                    break;
+
 
                             }
                         }

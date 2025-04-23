@@ -128,6 +128,7 @@ public class ItemShop : MonoBehaviour, SpaceActions
                 player.playerAction = false;
                 break;
             }
+            Input.ResetInputAxes();
 
             yield return null;
         }
