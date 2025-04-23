@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TurnController : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class TurnController : MonoBehaviour
     [SerializeField] public GameObject gameModeSelectionMenuUI;
 
 
-public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
+    public HUDManager hudManager;
 
 
 
@@ -20,6 +19,8 @@ public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
 
     public int turn =0;
     public int currentPlayer = 1;
+    public int maxRounds = 1;
+    public bool gameOver = false;
 
     void Start()
     {
@@ -34,14 +35,19 @@ public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
             gameModeSelectionMenuUI.SetActive(false);
         }
         setAllGamepads();
-        GameOptions gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
+        GameOptions gameOptions = null;
+        try{ 
+        gameOptions = GameObject.Find("GameOptions").GetComponent<GameOptions>();
+        }
+        catch { print("gameoption not found");}
         if (gameOptions != null) {
             print(gameOptions.players.Count);
             for (int i = 0; i < gameOptions.players.Count; i++) {
                 Destroy(playerList[i].transform.GetChild(0).gameObject);
                 GameObject playerInstance = Instantiate(gameOptions.players[i]);
                 playerInstance.transform.SetParent(playerList[i].gameObject.transform, false);
-            }
+      
+                }
         }
     }
 
@@ -110,9 +116,18 @@ public List<BaseUiManager> uiManagers = new List<BaseUiManager>();
 
 
     public void changeTurn() {
-        currentPlayer = 1;
-        changePlayerTurn();
-    
+        if (turn > maxRounds)
+        {
+            gameOver = true;
+            //Mathias - Insert Gameover Podium here!!!
+
+        }
+        else
+        {
+            currentPlayer = 1;
+            hudManager.ChangeRound(turn, maxRounds);
+            changePlayerTurn();
+        }
     }
 
     public bool isMyTurn(Player player) {
