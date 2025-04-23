@@ -17726,7 +17726,7 @@ GameObject:
   - component: {fileID: 936210043}
   - component: {fileID: 936210044}
   m_Layer: 0
-  m_Name: Space (22)
+  m_Name: ShopSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
