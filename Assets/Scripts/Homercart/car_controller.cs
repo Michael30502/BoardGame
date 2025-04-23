@@ -18,13 +18,13 @@ public class car_controller : MonoBehaviour
     [SerializeField] private raceCountDown match;
     public Gamepad gamepad;
     private float carindex;
-Rigidbody rb;
+    Rigidbody rb;
 
-void Start()
-{
-    rb = GetComponent<Rigidbody>();
-    rb.centerOfMass = new Vector3(0, -0.9f, 0); // Helps prevent flipping
-}
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = new Vector3(0, -0.9f, 0); // Helps prevent flipping
+    }
 
     // Settings
     [SerializeField] private float motorForce, breakForce, maxSteerAngle;
@@ -37,20 +37,23 @@ void Start()
     [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform, rearRightWheelTransform;
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+
     }
- 
 
 
-     private void GetInput() {
+
+    private void GetInput()
+    {
         // Steering Input
         float horizontal = 0f;
         float vertical = 0f;
-        
+
         if (InputManager.InputRight(gamepad))
             horizontal += 1f;
         if (InputManager.InputLeft(gamepad))
@@ -62,18 +65,18 @@ void Start()
         {
             match.isMatch = true;
         }
-        
 
 
-        if ( InputManager.InputRevers(gamepad) && match.isMatch)
+
+        if (InputManager.InputRevers(gamepad) && match.isMatch)
         {
-            vertical = -0.6f; 
+            vertical = -0.6f;
         }
-        else if ( InputManager.InputSelect(gamepad) && match.isMatch)
+        else if (InputManager.InputSelect(gamepad) && match.isMatch)
         {
             vertical = 1f; // forward
         }
-        else if ((InputManager.InputRevers(gamepad) ||InputManager.InputSelect(gamepad)) && match.isMatch)
+        else if ((InputManager.InputRevers(gamepad) || InputManager.InputSelect(gamepad)) && match.isMatch)
             vertical = 0.03f;
         else
         {
@@ -81,64 +84,69 @@ void Start()
         }
 
 
-            
- 
+
+
 
         verticalInput = vertical;
 
 
         isBreaking = InputManager.InputCancel(gamepad);
-        if(InputManager.flipOVer(gamepad) && match.isMatch)
-        
+        if (InputManager.flipOVer(gamepad) && match.isMatch)
+
         {
             flipCar();
         }
-         }  
-        
-      
-        
-    
+    }
 
-    private void HandleMotor() {
+
+
+
+
+    private void HandleMotor()
+    {
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();
     }
 
-    private void ApplyBreaking() {
+    private void ApplyBreaking()
+    {
         frontRightWheelCollider.brakeTorque = currentbreakForce;
         frontLeftWheelCollider.brakeTorque = currentbreakForce;
         rearLeftWheelCollider.brakeTorque = currentbreakForce;
         rearRightWheelCollider.brakeTorque = currentbreakForce;
     }
 
-    private void HandleSteering() {
+    private void HandleSteering()
+    {
         currentSteerAngle = maxSteerAngle * horizontalInput;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
     }
 
-    private void UpdateWheels() {
+    private void UpdateWheels()
+    {
         UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
         UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
         UpdateSingleWheel(rearRightWheelCollider, rearRightWheelTransform);
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
 
-    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform) {
+    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
+    {
         Vector3 pos;
-        Quaternion rot; 
+        Quaternion rot;
         wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
 
-private void flipCar()
-{
-Vector3 fwd = transform.forward;
-transform.rotation = Quaternion.identity;
-transform.forward = fwd;
-}
+    private void flipCar()
+    {
+        Vector3 fwd = transform.forward;
+        transform.rotation = Quaternion.identity;
+        transform.forward = fwd;
+    }
 
 }
