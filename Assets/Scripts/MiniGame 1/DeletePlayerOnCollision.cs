@@ -1,13 +1,24 @@
 using UnityEngine;
 
-public class PlayerDeathOnTagCollision : MonoBehaviour
+public class PlayerDeathOnCollision : MonoBehaviour
 {
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    [SerializeField] private PhysicsMaterial deathBarrierMaterial;
+
+    //FIX FOR SHIFT FROM CHRACTERCONTROLLER TO manual code.
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (hit.gameObject.CompareTag("DeathBarrier"))
+        foreach (ContactPoint contact in collision.contacts)
         {
-            
-            Destroy(gameObject);
+            var hitMaterial = contact.otherCollider.sharedMaterial;
+            var myMaterial = contact.thisCollider.sharedMaterial;
+
+            if (hitMaterial == deathBarrierMaterial || myMaterial == deathBarrierMaterial)
+            {
+                Debug.Log("Du ramte et rør makker");
+                Destroy(gameObject);
+                return;
+            }
         }
     }
 }
