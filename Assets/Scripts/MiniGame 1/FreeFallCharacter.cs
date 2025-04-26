@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class FreeFallCharacter : MonoBehaviour
 {
-    public float fallSpeed = 100f;
+    public float fallSpeed = 105f;
     public float moveSpeed = 10f;
     public float gravity = 9.81f;
 
@@ -22,7 +22,7 @@ public class FreeFallCharacter : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
 
-        rb.useGravity = false;  // We manually handle gravity
+        rb.useGravity = false;  // We manually handle gravity from buildsettings.
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
@@ -30,8 +30,8 @@ public class FreeFallCharacter : MonoBehaviour
     {
         float moveX = 0f;
         float moveZ = 0f;
-
-        if (assignedGamepad != null) // ONLY use the assigned gamepad
+        // ONLY use the assigned gamepad
+        if (assignedGamepad != null) 
         {
             moveX = assignedGamepad.leftStick.x.ReadValue();
             moveZ = assignedGamepad.leftStick.y.ReadValue();
@@ -49,6 +49,6 @@ public class FreeFallCharacter : MonoBehaviour
         moveDirection = inputVector * moveSpeed;
         
 
-        rb.linearVelocity = new Vector3(moveDirection.x, rb.linearVelocity.y - (gravity * Time.fixedDeltaTime), moveDirection.z);
+        rb.linearVelocity = new Vector3(moveDirection.x, -fallSpeed, moveDirection.z);
     }
 }
