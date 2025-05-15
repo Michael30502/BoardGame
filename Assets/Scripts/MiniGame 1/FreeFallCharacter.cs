@@ -12,6 +12,8 @@ public class FreeFallCharacter : MonoBehaviour
     private Vector3 moveDirection;
     private Gamepad assignedGamepad = null;
 
+    public bool HasWon { get; private set; } = false;
+
     public void SetGamepad(Gamepad gamepad)
     {
         assignedGamepad = gamepad;
@@ -50,5 +52,9 @@ public class FreeFallCharacter : MonoBehaviour
         
 
         rb.linearVelocity = new Vector3(moveDirection.x, -fallSpeed, moveDirection.z);
+    }
+    public void MarkAsWinner()
+    {
+        HasWon = true;
     }
 }

@@ -13,6 +13,13 @@ public class FallMeter : MonoBehaviour
     [SerializeField] private List<GameObject> playerCameraObjects;
     [SerializeField] private GameObject scoreBoardCamera;
     [SerializeField] private GameObject scoreBoardObject;
+    [SerializeField] private GameObject colorRandomizer;
+
+    private HashSet<int> winningPlayers = new HashSet<int>();
+
+
+    private bool colorRandomizerEnabled = false;
+
 
     private const float startY = 2352f;
     private List<float> lastKnownDistances;
@@ -28,6 +35,8 @@ public class FallMeter : MonoBehaviour
         if (panelBarsText.Count != freeFallCharacters.Count)
             return;
 
+        bool anyPlayerPast2200 = false;
+
         for (int i = 0; i < freeFallCharacters.Count; i++)
         {
             if (freeFallCharacters[i] != null)
@@ -36,6 +45,9 @@ public class FallMeter : MonoBehaviour
                 float distanceFallen = Mathf.Max(0f, startY - playerPosY);
                 lastKnownDistances[i] = distanceFallen;
                 panelBarsText[i].text = $"{Mathf.FloorToInt(distanceFallen)}m";
+
+                if (distanceFallen >= 2200f)
+                    anyPlayerPast2200 = true;
             }
             else
             {
@@ -43,12 +55,24 @@ public class FallMeter : MonoBehaviour
             }
         }
 
+        
+        if (!colorRandomizerEnabled && anyPlayerPast2200)
+        {
+            if (colorRandomizer != null)
+                colorRandomizer.SetActive(true);
+
+            colorRandomizerEnabled = true;
+        }
+
+       
         if (!scoreboardShown && AllPlayerCamerasInactive())
         {
             ShowScoreboard();
         }
     }
 
+
+    //For checking scoreboard should show basically.
     private bool AllPlayerCamerasInactive()
     {
         foreach (GameObject camObj in playerCameraObjects)
@@ -70,11 +94,28 @@ public class FallMeter : MonoBehaviour
         scoreboardShown = true;
     }
 
-    public List<(int playerIndex, float distance)> GetSortedFallResults() // This method is for ScoreBoard to order it.
+    public void RegisterWin(int playerIndex)
     {
-        return lastKnownDistances
-            .Select((distance, index) => (playerIndex: index, distance))
-            .OrderByDescending(p => p.distance)
-            .ToList();
+        if (!winningPlayers.Contains(playerIndex))
+        {
+            Debug.Log($"Player {playerIndex} WON!");
+            winningPlayers.Add(playerIndex);
+        }
     }
+
+
+    public List<(int playerIndex, float distance)> GetSortedFallResults()
+{
+    return freeFallCharacters
+        .Select((player, index) => (
+            playerIndex: index,
+            isWinner: player != null && player.HasWon,
+            distance: lastKnownDistances[index]
+        ))
+        .OrderByDescending(p => p.isWinner)         // winner winner chicken dinner
+        .ThenByDescending(p => p.distance)          
+        .Select(p => (p.playerIndex, p.distance))   //Take here for Score Michael I think?.
+        .ToList();
+}
+
 }

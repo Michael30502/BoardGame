@@ -4,7 +4,7 @@ public class PlayerDeathOnCollision : MonoBehaviour
 {
     [SerializeField] private PhysicsMaterial deathBarrierMaterial;
 
-    //FIX FOR SHIFT FROM CHRACTERCONTROLLER TO manual code.
+   
 
     private void OnCollisionEnter(Collision collision)
     {
