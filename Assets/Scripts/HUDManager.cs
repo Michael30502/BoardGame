@@ -106,6 +106,15 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    public Player GetTopPlayer()
+    {
+        return playerHUDs
+            .OrderByDescending(p => p.player.point)
+            .ThenByDescending(p => p.player.money)
+            .FirstOrDefault()?.player;
+    }
+
+
     private string GetRankString(int rank)
     {
         //Important to order hirachy of players,so players can get an equal position for excitement effect :)

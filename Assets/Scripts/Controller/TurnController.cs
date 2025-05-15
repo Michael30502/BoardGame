@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +10,10 @@ public class TurnController : MonoBehaviour
 
     [SerializeField] public Player[] playerList;
     [SerializeField] public GameObject gameModeSelectionMenuUI;
+    [SerializeField] public GameObject trophyRoom;
+
+    [SerializeField] private Transform trophySpot;
+
 
 
     public HUDManager hudManager;
@@ -52,7 +58,7 @@ public class TurnController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
 
@@ -106,30 +112,70 @@ public class TurnController : MonoBehaviour
                 turn++;
                 changeTurn();
 
-                // Enable game mode selection UI when a round has passed
-                if (gameModeSelectionMenuUI != null)
+                //To account for Roundbreak & gameOver, so menu dont pop up when its over..
+                if (!gameOver && gameModeSelectionMenuUI != null)
                 {
                     gameModeSelectionMenuUI.SetActive(true);
                 }
                 break;
+
         }
 
     }
 
-
-    public void changeTurn() {
+    public void changeTurn()
+    {
         if (turn > maxRounds)
         {
             gameOver = true;
-            //Mathias - Insert Gameover Podium here!!!
 
+            Player winner = hudManager.GetTopPlayer();
+            if (winner != null)
+            {
+                foreach (var root in playerList)
+                {
+                    if (root.GetComponentInChildren<Player>() == winner)
+                    {
+                        
+                        root.transform.position = Vector3.zero;
+
+                        //This is because playerscript forces the space to be linked, so its a fix to workaround it to display winner.
+                        Player playerScript = root.GetComponentInChildren<Player>();
+                        if (playerScript != null)
+                        {
+                            playerScript.enabled = false;
+                            Debug.Log(" Winner Player nr. " + root.name);
+                        }
+
+                        
+                        StartCoroutine(SnapToTrophyAfterDelay(root.transform, trophySpot.position, 1f));
+                        break;
+                    }
+                }
+            }
+
+
+            gameModeSelectionMenuUI.SetActive(false);
+            TrophyRoomEnablement();
         }
+
         else
         {
             currentPlayer = 1;
             hudManager.ChangeRound(turn, maxRounds);
         }
     }
+    //Transfer to trophy
+    private IEnumerator SnapToTrophyAfterDelay(Transform playerTransform, Vector3 targetPosition, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        playerTransform.position = targetPosition;
+        Debug.Log(" Winner transfered succesuflly.");
+    }
+
+
+
+
 
     public bool isMyTurn(Player player) {
 
@@ -137,6 +183,16 @@ public class TurnController : MonoBehaviour
 
 
     }
+    public void TrophyRoomEnablement()
+    {
+        if (gameOver == true)
+        {
+            gameModeSelectionMenuUI.SetActive(false);
+            trophyRoom.gameObject.SetActive(true);
+            cameras.gameObject.SetActive(false);
+        }
+    }
+
 
     public float calculateOffSet(Player player) {
         int count = 0;
