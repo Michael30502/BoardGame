@@ -137,7 +137,7 @@ public class Player : MonoBehaviour, IComparable<Player>
         Dice dieObject = GameObject.Instantiate(dice);
         dieObject.player = transform;
 
-        dieObject.StartRolling();
+        dieObject.StartRolling(dieType);
 
      
         yield return new WaitForSeconds(2.0f); // Adjust based on dice animation duration
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour, IComparable<Player>
    
         
 
-        dieObject.StopRolling(ran);
+        dieObject.StopRolling(ran,dieType);
 
         //adds extra moves from items
         ran += extraSpacesToMove;

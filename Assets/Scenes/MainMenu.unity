@@ -4863,7 +4863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &263433267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11944,6 +11944,8 @@ MonoBehaviour:
   turnController: {fileID: 0}
   money: 0
   point: 0
+  id: 0
+  position: 0
   defaultDieType: 6
   dieType: 6
   dice: {fileID: 0}
@@ -20193,6 +20195,8 @@ MonoBehaviour:
   turnController: {fileID: 0}
   money: 0
   point: 0
+  id: 0
+  position: 0
   defaultDieType: 6
   dieType: 6
   dice: {fileID: 0}
@@ -30075,6 +30079,8 @@ MonoBehaviour:
   turnController: {fileID: 0}
   money: 0
   point: 0
+  id: 0
+  position: 0
   defaultDieType: 6
   dieType: 6
   dice: {fileID: 0}
