@@ -26270,6 +26270,7 @@ MonoBehaviour:
   scoreBoardCamera: {fileID: 1570276511}
   scoreBoardObject: {fileID: 939109045}
   colorRandomizer: {fileID: 32139706}
+  scene: Dropper
 --- !u!1 &1144217846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2476962918429359364, guid: f71e73b7a9401a2459a31b1dec20ff55, type: 3}
