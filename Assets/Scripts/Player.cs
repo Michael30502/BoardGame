@@ -60,7 +60,7 @@ public class Player : MonoBehaviour, IComparable<Player>
             transform.rotation = Quaternion.Slerp(transform.rotation, tempRot0, Time.deltaTime * 1);
             transform.position = Vector3.Lerp(transform.position, tempPos, 1 * Time.deltaTime);
 
-            // ✅ Input handling (menu is already shown by TurnController)
+            
             if (items.Count == 0 && !block)
             {
                 if (InputManager.InputSelect(gamepad))
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour, IComparable<Player>
 
         dieObject.StopRolling(ran);
 
-        //adds extra moves from items
+        
         ran += extraSpacesToMove;
         if (extraSpacesToMove != 0)
         {
