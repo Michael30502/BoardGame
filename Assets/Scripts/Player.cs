@@ -1,35 +1,27 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
-using UnityEngine.InputSystem;
-using System;             
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using NUnit.Framework.Internal.Commands;
+using UnityEngine.InputSystem;
+using System;
 
-public class Player : MonoBehaviour, IComparable<Player> 
+public class Player : MonoBehaviour, IComparable<Player>
 {
-
     public List<Item> items = new List<Item>();
     public SpaceClass currentSpace;
     public int extraSpacesToMove;
-    public  bool block = true;
+    public bool block = true;
     public bool playerAction = false;
 
-    
     public TurnController turnController;
     public int money = 5;
     public int point = 0;
     public int id = 0;
     public int position = 0;
     public int defaultDieType = 6;
-
-
     public int dieType = 6;
+
     public Dice dice;
     public Dice defaultdice;
-
     public Gamepad gamepad;
 
     public SpaceClass makeChoice(ArrayList nextSpaces)
@@ -41,64 +33,54 @@ public class Player : MonoBehaviour, IComparable<Player>
     {
         StartCoroutine(RollDiceThenMove());
     }
+
     public int CompareTo(Player other)
-{
-    if (point != other.point)
-        return other.point.CompareTo(point);
-
-    if (money != other.money)
-        return other.money.CompareTo(money);
-
-    // Tie-breaker: Compare by player ID or name to ensure consistent ordering
-    return id.CompareTo(other.id); // Assuming each player has a unique ID
-}
-
-    private void Start()
     {
-       
+        if (point != other.point) return other.point.CompareTo(point);
+        if (money != other.money) return other.money.CompareTo(money);
+        return id.CompareTo(other.id);
     }
 
     private void Update()
     {
-        // Move player smoothly to current space
         Vector3 tempPos = currentSpace.transform.position;
         Quaternion tempRot = Quaternion.Euler(0.0f, 180, 0);
         Quaternion tempRot0 = Quaternion.Euler(0.0f, 0, 0);
-
-        //Removes the players of a space, when it is not their turn
         tempPos.y += 0.5f;
-        if (!turnController.isMyTurn(this))
+
+        bool isMyTurn = turnController.isMyTurn(this);
+
+        if (!isMyTurn)
         {
-            gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, tempRot, Time.deltaTime * 1);
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, tempPos + new Vector3(turnController.calculateOffSet(this), 0, 0), 1 * Time.deltaTime);
-
-
+            transform.rotation = Quaternion.Slerp(transform.rotation, tempRot, Time.deltaTime * 1);
+            transform.position = Vector3.Lerp(transform.position, tempPos + new Vector3(turnController.calculateOffSet(this), 0, 0), 1 * Time.deltaTime);
         }
         else
         {
-            gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, tempRot0, Time.deltaTime * 1);
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, tempPos, 1 * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, tempRot0, Time.deltaTime * 1);
+            transform.position = Vector3.Lerp(transform.position, tempPos, 1 * Time.deltaTime);
 
+            // ✅ Input handling (menu is already shown by TurnController)
+            if (items.Count == 0 && !block)
+            {
+                if (InputManager.InputSelect(gamepad))
+                    StartCoroutine(RollDiceThenMove());
+            }
+            else if (!block)
+            {
+                StartCoroutine(ChooseItem());
+            }
         }
-        if (items.Count == 0) { 
-        if (InputManager.InputSelect(gamepad) && block == false)
-        {
-            StartCoroutine(RollDiceThenMove());
-        }
-            
     }
-        else if (!block)
-        {
-            StartCoroutine(ChooseItem());
-        }
-    }
+
+
 
     IEnumerator ChooseItem()
     {
-        
         block = true;
         print("choose item");
         int itemSelected = 0;
+
         while (true)
         {
             int tempValue = ChooseOption.Choose(itemSelected, items.Count, gamepad);
@@ -107,47 +89,47 @@ public class Player : MonoBehaviour, IComparable<Player>
                 itemSelected = tempValue;
                 print(items[itemSelected].name);
             }
+
             if (InputManager.InputSelect(gamepad))
             {
-                print("test2");
                 items[itemSelected].Action(this);
                 items.RemoveAt(itemSelected);
+                turnController.DisableCurrentMenu(); // Hides menu
                 yield return StartCoroutine(RollDiceThenMove());
                 break;
-
-                
             }
+
             if (InputManager.InputCancel(gamepad))
             {
+                turnController.DisableCurrentMenu(); // Hides menu
                 yield return StartCoroutine(RollDiceThenMove());
                 break;
-
-
             }
 
             yield return null;
         }
-
-
     }
 
     IEnumerator RollDiceThenMove()
     {
         block = true;
+
+        turnController.DisableCurrentMenu();
+
         Dice dieObject = GameObject.Instantiate(dice);
         dieObject.player = transform;
 
         dieObject.StartRolling();
 
-     
+
         yield return new WaitForSeconds(2.0f); // Adjust based on dice animation duration
 
-       
-        int ran = UnityEngine.Random.Range(1, dieType+1);
-        
+
+        int ran = UnityEngine.Random.Range(1, dieType + 1);
+
         print("Rolled " + ran);
-   
-        
+
+
 
         dieObject.StopRolling(ran);
 
@@ -164,13 +146,11 @@ public class Player : MonoBehaviour, IComparable<Player>
         DestroyImmediate(dieObject.gameObject);
         dice = defaultdice;
         dieType = defaultDieType;
-       
+
         yield return StartCoroutine(SwapSpace(ran));
 
-       
-    }
 
-    
+    }
 
     IEnumerator SwapSpace(int n)
     {
@@ -182,12 +162,9 @@ public class Player : MonoBehaviour, IComparable<Player>
                 yield return new WaitForSeconds(1.5f);
 
                 if (currentSpace.spaceAction.GetCountSpace())
-                {
                     n--;
-                }
                 else
                 {
-                    print("check");
                     playerAction = true;
                     currentSpace.spaceAction.Action(this);
                 }
@@ -200,10 +177,8 @@ public class Player : MonoBehaviour, IComparable<Player>
 
         currentSpace.spaceAction.Action(this);
         yield return new WaitForSeconds(2);
-        print("Ready current money: "+ money);
+
         turnController.currentPlayer++;
         turnController.changePlayerTurn();
-
-
     }
 }
