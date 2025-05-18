@@ -1,0 +1,6 @@
+{
+    "name": "HomerTests",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}
