@@ -45,7 +45,7 @@ public class ItemImageDisplay : MonoBehaviour
     {
         for (int i = 0; i < itemSlotImages.Length; i++)
         {
-            if (i < player.items.Count)
+            if (i < player.items.Count&& player.items[i] != null)
             {
                 string itemName = player.items[i].name;
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -64,44 +65,28 @@ public class TurnController : MonoBehaviour
         }
     }
 
-    public void changePlayerTurn()
-    {
-        
-        foreach (var player in playerList)
-        {
-            player.block = true;
+    public void changePlayerTurn() {
+
+        if (!(currentPlayer >= 4)) { 
+        cameras.player = playerList[currentPlayer-1].transform;
+
+        playerList[currentPlayer-1].block = false;
+        if (playerList[currentPlayer - 1].items.Count > 0)
+            itemMenus[currentPlayer - 1].SetActive(true);
+    }
+            else{
+                turn++;
+                changeTurn();
+
+                //To account for Roundbreak & gameOver, so menu dont pop up when its over..
+                if (!gameOver && gameModeSelectionMenuUI != null)
+                {
+                    gameModeSelectionMenuUI.SetActive(true);
+                }
+                
+
         }
 
-        //menu troubleshooting basically
-        foreach (var menu in itemMenus)
-        {
-            if (menu != null)
-                menu.SetActive(false);
-        }
-
-        // Determine active player
-        int index = currentPlayer - 1;
-        if (index < 0 || index >= playerList.Length) return;
-
-        Player activePlayer = playerList[index];
-        activePlayer.block = false;
-        cameras.player = activePlayer.transform;
-
-        // Enable only this player's menu if they have items
-        if (activePlayer.items.Count > 0 && itemMenus[index] != null)
-        {
-            itemMenus[index].SetActive(true);
-            Debug.Log($"Player {activePlayer.id}'s turn. Menu enabled.");
-        }
-
-        // Edge case: round end
-        if (currentPlayer == 5)
-        {
-            turn++;
-            changeTurn();
-            if (!gameOver && gameModeSelectionMenuUI != null)
-                gameModeSelectionMenuUI.SetActive(true);
-        }
     }
 
     public void changeTurn()

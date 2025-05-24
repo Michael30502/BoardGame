@@ -21,12 +21,16 @@ public class ItemShop : MonoBehaviour, SpaceActions
 
     public void Action(Player player)
     {
+
+        if (!(player.items.Count >= 3)) { 
         audioSource = GetComponent<AudioSource>();
 
         if (ShopWindowCamera != null)
             ShopWindowCamera.SetActive(true);
 
         StartCoroutine(Shop(player));
+    }
+        else { player.playerAction = false; }
     }
 
     public bool GetCountSpace()

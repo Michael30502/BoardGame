@@ -31,8 +31,8 @@ RectTransform:
   m_LocalScale: {x: 0.47794, y: 0.31519, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 252522978887564783}
   - {fileID: 1863709741448114936}
+  - {fileID: 252522978887564783}
   - {fileID: 8408689569717920130}
   m_Father: {fileID: 4821188636816086871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 665395585913430110}
   - component: {fileID: 563599638260057074}
   m_Layer: 5
-  m_Name: Itemslot1
+  m_Name: Itemslot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 6077675633693364745}
   - component: {fileID: 5092202060833176596}
   m_Layer: 5
-  m_Name: Itemslot2
+  m_Name: Itemslot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

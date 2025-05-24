@@ -7,7 +7,7 @@ public class ItemImageDisplayPicker : MonoBehaviour
     public Player player;
 
     [Header("UI Images for item slots")]
-    public Image[] itemSlotImages = new Image[3];
+    public List<Image> itemSlotImages = new List<Image>();
 
     [Header("UI Outlines matching each item slot (must be UnityEngine.UI.Outline)")]
     public UnityEngine.UI.Outline[] itemSlotOutlines = new UnityEngine.UI.Outline[3];
@@ -39,12 +39,12 @@ public class ItemImageDisplayPicker : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            selectedSlot = (selectedSlot + 1) % itemSlotImages.Length;
+            selectedSlot = (selectedSlot + 1) % player.items.Count;
             UpdateSlotOutlines();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            selectedSlot = (selectedSlot - 1 + itemSlotImages.Length) % itemSlotImages.Length;
+            selectedSlot = (selectedSlot - 1 + player.items.Count) % player.items.Count;
             UpdateSlotOutlines();
         }
 
@@ -54,7 +54,7 @@ public class ItemImageDisplayPicker : MonoBehaviour
 
     private void UpdateItemSlotImages()
     {
-        for (int i = 0; i < itemSlotImages.Length; i++)
+        for (int i = 0; i < itemSlotImages.Count; i++)
         {
             if (i < player.items.Count)
             {
