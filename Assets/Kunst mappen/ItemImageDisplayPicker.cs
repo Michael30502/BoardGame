@@ -2,13 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemImageDisplay : MonoBehaviour
+public class ItemImageDisplayPicker : MonoBehaviour
 {
-    
     public Player player;
 
-    [Header("UI Images for item slots, so players can have the same item twice as well!")]
+    [Header("UI Images for item slots")]
     public Image[] itemSlotImages = new Image[3];
+
+    [Header("UI Outlines matching each item slot (must be UnityEngine.UI.Outline)")]
+    public UnityEngine.UI.Outline[] itemSlotOutlines = new UnityEngine.UI.Outline[3];
+
 
     [Header("Sprites mapped to item names")]
     public Sprite beerSprite;
@@ -16,30 +19,38 @@ public class ItemImageDisplay : MonoBehaviour
     public Sprite d20Sprite;
 
     private Dictionary<string, Sprite> itemSpriteMap;
+    private int selectedSlot = 0;
 
     private void Awake()
     {
-        //Possibilties from items sorrt, ez fix!
-        if (player == null)
-        {
-            player = GetComponentInParent<Player>();
-            if (player == null)
-            {
-                Debug.LogError("ItemImageDisplayPicker: No Player component found in parent.");
-            }
-        }
         itemSpriteMap = new Dictionary<string, Sprite>
         {
             { "Duff Beer", beerSprite },
             { "D10", d10Sprite },
             { "D20", d20Sprite }
         };
+
+        UpdateSlotOutlines();
     }
 
     private void Update()
     {
-        UpdateItemSlotImages();
+        if (player == null) return;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            selectedSlot = (selectedSlot + 1) % itemSlotImages.Length;
+            UpdateSlotOutlines();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            selectedSlot = (selectedSlot - 1 + itemSlotImages.Length) % itemSlotImages.Length;
+            UpdateSlotOutlines();
+        }
+
+        UpdateItemSlotImages(); //  always called, like when it worked
     }
+
 
     private void UpdateItemSlotImages()
     {
@@ -56,13 +67,26 @@ public class ItemImageDisplay : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning($"No sprite mapped for this itemerino '{itemName}'");
+                    Debug.LogWarning($"No sprite mapped for item '{itemName}'");
                     itemSlotImages[i].enabled = false;
                 }
             }
             else
             {
                 itemSlotImages[i].enabled = false;
+            }
+        }
+    }
+
+
+
+    private void UpdateSlotOutlines()
+    {
+        for (int i = 0; i < itemSlotOutlines.Length; i++)
+        {
+            if (itemSlotOutlines[i] != null)
+            {
+                itemSlotOutlines[i].enabled = (i == selectedSlot);
             }
         }
     }
