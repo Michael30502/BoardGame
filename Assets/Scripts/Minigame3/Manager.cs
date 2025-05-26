@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
@@ -22,6 +23,7 @@ public class Manager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        setAllGamepads();
 
         try
         {
@@ -123,5 +125,16 @@ public class Manager : MonoBehaviour
 
     }
 
+    public void setAllGamepads() {
+        
+            for (int i = 0; i < 4; i++)
+            {
+                if (Gamepad.all.Count > i)
+                {
+                    players[i].gamePad = Gamepad.all[i];
+                }
+            }
+        }
 
-}
+
+    }

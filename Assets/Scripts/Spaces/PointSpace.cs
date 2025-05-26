@@ -133,7 +133,7 @@ public class PointSpace : MonoBehaviour, SpaceActions
             {
 
 
-                if (!leftPathSelected)
+                if (leftPathSelected)
 
 
                 {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMinigame3 : MonoBehaviour
 {
-    Gamepad gamePad = null;
+    public Gamepad gamePad = null;
     [SerializeField] public Manager manager;
 
     public bool hasWon=false;
@@ -54,31 +54,46 @@ public class PlayerMinigame3 : MonoBehaviour
 
         int selection = 0;
         bool block = true;
+        bool leftBlock  =false;
+        bool rightBlock = false;
         while (block)
         {
 
             if (InputManager.InputLeft(gamePad))
             {
                 print("left");
-                selection--;
+                if (!leftBlock) {
+                    selection--;
+                    leftBlock = true;
+                }
 
-
+            }
+            else
+            {
+                leftBlock = false;
             }
 
             if (InputManager.InputRight(gamePad))
+            { 
+            print("right");
+            print("left");
+            if (!rightBlock)
             {
-                print("right");
-
                 selection++;
+                rightBlock = true;
+
+            } }
+                else
+                {
+                    rightBlock = false;
+                }
 
 
-            }
 
 
 
 
-
-            if (selection > manager.keys.Count-1)
+                if (selection > manager.keys.Count-1)
             {
                 selection = 0;
             }
@@ -96,7 +111,7 @@ public class PlayerMinigame3 : MonoBehaviour
 
             }
 
-            if (InputManager.InputSelect(gamePad))
+            if (InputManager.InputSelectDown(gamePad))
             {
                 Input.ResetInputAxes();
 
@@ -118,28 +133,46 @@ public class PlayerMinigame3 : MonoBehaviour
 
         int selection = 0;
         bool block = true;
+            bool leftBlock = false;
+            bool rightBlock = false;
         while (block)
         {
             if (InputManager.InputLeft(gamePad))
             {
-
-                selection--;
-
+                print("left");
+                if (!leftBlock)
+                {
+                    selection--;
+                    leftBlock = true;
+                }
 
             }
+            else
+            {
+                leftBlock = false;
+            }
 
-            if (InputManager.InputRight(gamePad))
+            if (InputManager.InputRight(gamePad)) { 
+            print("right");
+            print("left");
+            if (!rightBlock)
             {
                 selection++;
-
+                rightBlock = true;
 
             }
+        }
+                    else
+                    {
+                        rightBlock = false;
+                    }
+                
 
 
 
 
 
-            if (selection > manager.doors.Count - 1)
+                    if (selection > manager.doors.Count - 1)
             {
                 selection = 0;
             }
@@ -156,13 +189,15 @@ public class PlayerMinigame3 : MonoBehaviour
                     manager.doors[i].selected = false;
 
             }
-            if (InputManager.InputSelect(gamePad))
+            if (InputManager.InputSelectDown(gamePad))
             {
                 if (!manager.checkKeyPair(manager.doors[selection], manager.keys[keySelection]))
                 {
                     manager.doors[selection].selected = false;
                     manager.keys[keySelection].selected = false;
                 }
+                Input.ResetInputAxes();
+
                 block = false;
 
                 yield return new WaitForSeconds(1.0f);

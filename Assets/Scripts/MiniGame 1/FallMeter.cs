@@ -70,7 +70,7 @@ public class FallMeter : MonoBehaviour
                 lastKnownDistances[i] = distanceFallen;
                 panelBarsText[i].text = $"{Mathf.FloorToInt(distanceFallen)}m";
 
-                if (distanceFallen >= 2200f)
+                if (distanceFallen >= 2100f)
                     anyPlayerPast2200 = true;
             }
             else

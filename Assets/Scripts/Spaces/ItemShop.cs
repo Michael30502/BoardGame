@@ -98,6 +98,8 @@ public class ItemShop : MonoBehaviour, SpaceActions
 
             if (ChooseOption.Select(player.gamepad))
             {
+                print(player.money);
+
                 if (player.money >= shop[itemSelected].price)
                 {
                     player.items.Add((Item)shop[itemSelected].Clone());
@@ -106,8 +108,7 @@ public class ItemShop : MonoBehaviour, SpaceActions
 
                     Debug.Log("You bought: " + shop[itemSelected].name + " Thank you come again");
 
-                    if (ThankYouComeAgainClip != null)
-                        audioSource.PlayOneShot(ThankYouComeAgainClip);
+            
 
                     if (shopItem3DObjects != null && itemSelected < shopItem3DObjects.Count)
                     {
@@ -118,6 +119,8 @@ public class ItemShop : MonoBehaviour, SpaceActions
                         audioSource.PlayOneShot(BuyBeerClip);
                     else if (shop[itemSelected].name == "D10" && BuyD10Clip != null)
                         audioSource.PlayOneShot(BuyD10Clip);
+                    else if (shop[itemSelected].name == "D20" && ThankYouComeAgainClip != null)
+                            audioSource.PlayOneShot(ThankYouComeAgainClip);
 
                     break;
                 }

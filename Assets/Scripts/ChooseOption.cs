@@ -8,14 +8,14 @@ public class ChooseOption : MonoBehaviour
     {
         
 
-            if (InputManager.InputLeft(gamepad))
+            if (InputManager.InputLeftDown(gamepad))
             {
                 currentOption--;
             Input.ResetInputAxes();
 
 
         }
-        if (InputManager.InputRight(gamepad))
+        if (InputManager.InputRightDown(gamepad))
             {
             currentOption++;
             Input.ResetInputAxes();

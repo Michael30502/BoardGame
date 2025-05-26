@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: D20
+  price: 5
   die: {fileID: 2266832468421740639, guid: 5cff28c0c01e55b4288b2fafe5ff7d5a, type: 3}
   dieType: 20
 --- !u!1001 &1356654826230107604

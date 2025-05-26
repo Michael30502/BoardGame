@@ -56,7 +56,8 @@ public class GameSelector : MonoBehaviour
     {
         int spinCount = Random.Range(minSpin, maxSpin);
         if (riggedDiceRoll != -1) {
-            spinCount = riggedDiceRoll-1;
+            spinCount = riggedDiceRoll-1+30;
+            riggedDiceRoll++;
         }
         chosenIndex = spinCount % gameButtons.Length;
 

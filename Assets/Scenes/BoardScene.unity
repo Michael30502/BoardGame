@@ -26488,7 +26488,7 @@ MonoBehaviour:
   maxSpin: 60
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
-  riggedDiceRoll: -1
+  riggedDiceRoll: 1
   sceneParent: {fileID: 1054286712}
 --- !u!4 &1251439225
 Transform:
@@ -45636,13 +45636,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2900f51797bb85d46bdbbd66078af623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 4002347812849750347, guid: 3af8064f5bbbe3f44b8307cddb4fc4b1, type: 3}
   currentSpace: {fileID: 495560403}
   extraSpacesToMove: 0
   block: 1
   playerAction: 0
   turnController: {fileID: 1480505592}
-  money: 0
+  money: 5
   point: 0
   id: 0
   position: 0
@@ -45720,13 +45721,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 3741440062019728816, guid: 9af79810cf5685d4cae2a34ed03ec842, type: 3}
+  - {fileID: 2941972726357682781, guid: ecf1b70e7a6b3d74fa22ccc870d4b6da, type: 3}
   currentSpace: {fileID: 495560403}
   extraSpacesToMove: 0
   block: 1
   playerAction: 0
   turnController: {fileID: 1480505592}
-  money: 0
+  money: 5
   point: 0
   id: 0
   position: 0
@@ -46146,13 +46147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2900f51797bb85d46bdbbd66078af623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 4002347812849750347, guid: 3af8064f5bbbe3f44b8307cddb4fc4b1, type: 3}
   currentSpace: {fileID: 495560403}
   extraSpacesToMove: 0
   block: 1
   playerAction: 0
   turnController: {fileID: 1480505592}
-  money: 0
+  money: 5
   point: 0
   id: 0
   position: 0
@@ -46257,7 +46259,7 @@ MonoBehaviour:
   block: 0
   playerAction: 0
   turnController: {fileID: 1480505592}
-  money: 0
+  money: 5
   point: 0
   id: 0
   position: 0
